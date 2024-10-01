@@ -50,6 +50,46 @@ public class Ejer {
         // System.out.println("La division de los 2 es de: "+div);
         //
         //2.2
+        // String nombre = ("Josue de la Cruz");
+        // System.out.println(nombre);
+        //
+        //2.3
+        // String nombre = ("Josue de la Cruz");
+        // int edad = 19;
+        // String vivo = ("coño de tu madre");
+        // System.out.println(nombre+" tengo "+edad+" y vivo en el "+vivo);
+        //
+        //2.4
+        // int euro = 1;
+        // double peseta = 166.386;
+        // double pesetas = euro*peseta;
+        // System.out.println(euro+" euro a pesetas es "+pesetas);
+        //
+        //2.5
+        // double euro = 166.386;
+        // double peseta = 1;
+        // double euros = peseta/euro;
+        // System.out.println(peseta+" pesetas a euros es "+euros);
+        //
+        //2.6
+        // double producto = 4.5;
+        // int iva = 21;
+        // double x1 = (producto*iva)/100;
+        // double total = producto+x1;
+        // System.out.println("El precio total con iva incluido del colacao es de: "+total);
+        //
+        //2.7 
+        // char letra = 'J';
+        // String nombre = ("Josue de la Cruz");
+        // System.out.println(nombre+letra); //Creo que no deberia de funcionar aunque no sé.
+        //
+        //2.8
+        // char letra1 = 'J';
+        // char letra2 = 'O';
+        // char letra3 = 'S';
+        // char letra4 = 'U';
+        // String palabra = " "+letra1+letra2+letra3+letra4;
+        // System.out.println("Me llamo"+palabra);
         
         //Punto 3:
         //Punto 4:
