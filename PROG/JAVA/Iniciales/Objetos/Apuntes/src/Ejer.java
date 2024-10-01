@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class Ejer {
     public static void main(String[] args) throws Exception {
         //Punto 1:
@@ -90,8 +91,110 @@ public class Ejer {
         // char letra4 = 'U';
         // String palabra = " "+letra1+letra2+letra3+letra4;
         // System.out.println("Me llamo"+palabra);
-        
+
         //Punto 3:
+        Scanner sc = new Scanner(System.in);
+        //3.1
+        // System.out.print("Introduce 2 numeros separados por un espacio: ");
+        // int n1 = sc.nextInt();
+        // int n2 = sc.nextInt();
+        // int multi = n1*n2;
+        // System.out.println("El resultado de la multiplicacion es: "+multi);
+        //
+        //3.2
+        // System.out.print("Introduce la cantidad en euros que quieras pasar a pesetas: ");
+        // int euro = Integer.parseInt(sc.nextLine());
+        // double peseta = 166.386;
+        // double pesetas = euro*peseta;
+        // System.out.println(euro+" euro a pesetas es "+pesetas);
+        //
+        //3.3
+        // System.out.print("Introduce la cantidad en euros que quieras pasar a pesetas: ");
+        // int peseta = Integer.parseInt(sc.nextLine());
+        // double euro = 166.386;
+        // double euros = peseta/euro;
+        // System.out.println(peseta+" pesetas a euros es "+euros);
+        //
+        //3.4
+        // System.out.print("Introduce 2 numeros separados por un espacio: ");
+        // int n1 = sc.nextInt();
+        // int n2 = sc.nextInt();
+        // int suma = n1+n2;
+        // int resta = n1-n2;
+        // int multi = n1*n2;
+        // double div = (double) n1/n2;
+        // System.out.println("El resultado de la suma es: "+suma);
+        // System.out.println("El resultado de la resta es: "+resta);
+        // System.out.println("El resultado de la multiplicacion es: "+multi);
+        // System.out.println("El resultado de la division es: "+div);
+        //
+        //3.5
+        // System.out.print("Introduce 2 numeros(separados por un espacio) para sacar el área de un rectangulo: ");
+        // double l1 = sc.nextDouble();
+        // double a1 = sc.nextDouble();
+        // double areaR = l1*a1;
+        // System.out.printf("El area del rectangulo es de: %.2f\n", areaR);
+        //
+        //3.6
+        // System.out.print("Introduce 2 numeros(separados por un espacio) para sacar el área de un triangulo: ");
+        // double b1 = sc.nextDouble();
+        // double a1 = sc.nextDouble();
+        // double areaT = (b1*a1)/2;
+        // System.out.printf("El area del rectangulo es de: %.2f\n", areaT);
+        //
+        //3.7
+        // System.out.print("Introduce el nombre del producto: ");
+        // String nombre = sc.nextLine();
+        // System.out.print("Introduce el precio del producto: ");
+        // double precio = sc.nextDouble();
+        // double iva = (precio*21) /100;
+        // double total = precio + iva;
+        // System.out.printf("El %s tiene un precio total de: %.2f\n",nombre,total);
+        //
+        //3.8
+        // System.out.print("Introduce las horas trabajadas: ");
+        // double horas = sc.nextDouble();
+        // double dia = horas*12;
+        // double semana = (dia*7);
+        // System.out.printf(horas+"h equivalen a: "+dia+" euros al dia y "+semana+" euros a la semana");
+        //
+        //3.9
+        // System.out.print("Introduce la base del cono: ");
+        // double radio = sc.nextDouble();
+        // System.out.print("Introduce la altura del cono: ");
+        // double altura = sc.nextDouble();
+        // double pi = Math.PI;
+        // double volumen = (1.0 / 3) * pi * Math.pow(radio, 2) * altura;
+        // System.out.printf("El volumen del cono es: %.2f\n", volumen);
+        //
+        //3.10
+        // final int conversion = 1024;
+        // System.out.print("Introduce el número de MB que quieres convertir a kb: ");
+        // int MB = sc.nextInt();
+        // double Kb = (double) MB*conversion;
+        // System.out.printf("%d MB son %.2f Kb.\n", MB, Kb);
+        //
+        //3.11
+        // final double conversion = 1024.0;
+        // System.out.print("Introduce el número de Kb que quieres convertir a MB: ");
+        // int Kb = sc.nextInt();
+        // double MB = Kb/conversion;
+        // System.out.printf("%d Kb son %.2f MB.\n", Kb, MB);
+        // //
+        //3.12
+        // System.out.print("Introduce la nota del 1ºer trimestre: ");
+        // double n1 = Double.parseDouble(sc.nextLine());
+        // System.out.print("Introduce la nota deseada al final del trimestre: ");
+        // double n = Double.parseDouble(sc.nextLine());
+        // double n2 = (n - (n1 * 0.4)) / 0.6;
+        // if (n2 <= 10 && n2 >= 5) {
+        //     System.out.printf("Bro, te puedes relajar (no tanto), vas bien porque necesitas un %.1f en el segundo examen.\n", n2);
+        // } else if (n2 > 10) {
+        //     System.out.printf("Men, es IMPOSIBLE, necesitas un %.2f en el segundo examen para alcanzar la media deseada.\n", n2);
+        // } else {
+        //     System.out.println("Error inesperado con la nota calculada.");
+        // }
+        sc.close();
         //Punto 4:
     }
 }
