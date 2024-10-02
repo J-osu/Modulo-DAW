@@ -1,46 +1,48 @@
 import java.util.Scanner;
 public class figura{
-    public static double r1;
-    public static double b1;
-    public static double a1;
+    public static double area;
     public static final double pi = 3.1416;
     public static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) throws Exception{
-        //Area del cuadrado.
+        // figura.area = figura.Areadelcuadrado();
+        // System.out.print("El area del cuadrado es de: "+figura.area+" m2");
+        // figura.area = figura.Areadelrectanguo();
+        // System.out.printf("El area del rectangulo es de: "+figura.area+" m2");
+        // figura.area = figura.Areadeltriangulo();
+        // System.out.printf("El area del rectangulo es de: "+figura.area+" m2");
+        // figura.area = figura.Areadelcirculo();
+        // System.out.printf("El area del rectangulo es de: "+figura.area+" m2");
+        figura.pintarmenu();
+    }
+        // public static double Areadelcuadrado(){
         // System.out.print("Introduce 1 numero(separados por un espacio) para sacar el área de un rectangulo: ");
-        // double b1 = sc.nextDouble();
-        // figura.b1 = figura.sc.nextDouble();
-        // double areaC = figura.b1*figura.b1;
-        // System.out.printf("El area del cuadrado es: %.2f\n",areaC);
-        //
-        //Area del rectanguo.
+        // double lado = figura.sc.nextDouble();
+        // return lado * lado;
+        // }
+
+        // public static double Areadelrectanguo(){
         // System.out.print("Introduce 1 numero: ");
-        // double b1 = sc.nextDouble();
-        // figura.b1 = figura.sc.nextDouble();
+        // double lado1 = figura.sc.nextDouble();
         // System.out.print("Introduce otro numero para sacar el área de un rectangulo: ");
-        // double a1 = sc.nextDouble();
-        // figura.a1 = figura.sc.nextDouble();
-        // double areaR = figura.b1 * figura.a1;
-        // System.out.printf("El area del rectangulo es de: %.2f\n", areaR);
-        //
-        //Area del triangulo
+        // double lado2 = figura.sc.nextDouble();
+        // return lado1 * lado2;
+        // }
+
+        // public static double Areadeltriangulo(){
         // System.out.print("Introduce 1 numero: ");
-        // double b1 = sc.nextDouble();
-        // figura.b1 = figura.sc.nextDouble();
+        // double base = figura.sc.nextDouble();
         // System.out.print("Introduce otro numero para sacar el área de un triangulo: ");
-        // double a1 = sc.nextDouble();
-        // figura.a1 = figura.sc.nextDouble();
-        // double areaT = (b1*a1)/2;
-        // System.out.printf("El area del rectangulo es de: %.2f\n", areaT);
-        //
-        //Area del circulo.
-        System.out.print("Introduce el radio del circulo: ");
-        // double r1 = sc.nextDouble();
-        figura.r1 = figura.sc.nextDouble();
-        // double pi = 3.14;
-        double area = figura.pi*(r1*2);
-        System.out.printf("El area del rectangulo es de: %.2f\n", area);
-        //
+        // double altura = figura.sc.nextDouble();
+        // return (base*altura)/2;
+        // }
+
+        // public static double Areadelcirculo(){
+        // System.out.print("Introduce el radio del circulo: ");
+        // double circulo = figura.sc.nextDouble();
+        // double pi = figura.pi;
+        // return (circulo*2)*pi;
+        // }
+
         //Volumen del cono.
         // System.out.print("Introduce la base del cono: ");
         // double radio = sc.nextDouble();
@@ -50,5 +52,17 @@ public class figura{
         // double volumen = (1.0 / 3) * pi * Math.pow(radio, 2) * altura;
         // System.out.printf("El volumen del cono es: %.2f\n", volumen);
 
-    }
+        public static void pintarmenu() {
+            System.out.println("┌─────────────────────────────┐");
+            System.out.println("│       Menu principal.       │");
+            System.out.println("│─────────────────────────────│");
+            System.out.println("│ 1-Area del cuadrado ■       │");
+            System.out.println("│ 2-Area del rectangulo █     │");
+            System.out.println("│ 3-Area del triangulo  A     │");
+            System.out.println("│ 4-Area del circulo o        │");
+            System.out.println("│ 5-Area del prisma traingular│");
+            System.out.println("└─────────────────────────────┘");
+
+        }
+
 }
