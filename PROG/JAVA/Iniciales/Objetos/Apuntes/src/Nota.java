@@ -19,17 +19,15 @@ public class Nota{
             System.out.print("Introduce la nota obtenida: ");
             double nota = Nota.sc.nextDouble();
             if (nota>=0 && nota<5) {
-                System.out.print(nombre+" tiene un "+nota+" en "+modulo+" lo cual quiere decir que esta suspenso");
-            } else if (nota>=5 && nota<6) {
-                System.out.print(nombre+" tiene un "+nota+" en "+modulo+" lo cual quiere decir que esta aprobado");
-            } else if (nota>=6 && nota<7) {
-                System.out.print(nombre+" tiene un "+nota+" en "+modulo+" lo cual quiere decir que esta bien");
-            } else if (nota>=7 && nota<8) {
-                System.out.print(nombre+" tiene un "+nota+" en "+modulo+" lo cual quiere decir que esta notable");
+                System.out.print(nombre+" tiene un "+nota+" en "+modulo+" lo cual quiere decir que esta suspenso.");
+            } else if (nota>=5 && nota<7) {
+                System.out.print(nombre+" tiene un "+nota+" en "+modulo+" lo cual quiere decir que esta aprobad.");
+            } else if (nota>=6 && nota<8) {
+                System.out.print(nombre+" tiene un "+nota+" en "+modulo+" lo cual quiere decir que esta bien.");
             } else if (nota>=8 && nota<9) {
-                System.out.print(nombre+" tiene un "+nota+" en "+modulo+" lo cual quiere decir que esta sobresaliente");
-            } else if (nota>=9 && nota<10) {
-                System.out.print(nombre+" tiene un "+nota+" en "+modulo+" lo cual quiere decir que esta graduado");
+                System.out.print(nombre+" tiene un "+nota+" en "+modulo+" lo cual quiere decir que esta notable.");
+            } else if (nota>=9 && nota==10) {
+                System.out.print(nombre+" tiene un "+nota+" en "+modulo+" lo cual quiere decir que esta sobresaliente.\n");
             } else if(nota>10){
                 System.out.println("Error, vuelbe a introducir la nota"); }
             

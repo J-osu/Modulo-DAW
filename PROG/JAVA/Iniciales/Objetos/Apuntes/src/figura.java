@@ -4,7 +4,7 @@ public class figura{
     public static final double pi = 3.1416;
     public static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) throws Exception{
-        figura.pintarmenu();
+        figura.Menu();
     }
         public static double Areadelcuadrado(){
         System.out.print("Introduce 1 numero(separados por un espacio) para sacar el área de un rectangulo: ");
@@ -55,37 +55,32 @@ public class figura{
             System.out.println("│ 5-Area del prisma traingular│");
             System.out.println("└─────────────────────────────┘");
             System.out.println("Elige una opcion: ");
-            figura.condiciones();
 
         }
-        public static void condiciones(){
-            int opcion;
+        public static void Menu(){
+            double opcion;
         char respuesta;
         boolean continuar = true; 
         while (continuar) { //Bucle whille (mientras) -> Se ejecuta mientras la CONDICION ES CIERTA
             figura.pintarmenu();
-            opcion = figura.sc.nextInt();
-            //1 SOLO if .. else --> 2 valore v/f ---> Condicional simple
-            //varios if ANIDADOS --> decido entre n VALORES --> Condicional Compuesto
-            if (opcion == 1){ //instrucción CONDICIONAL
-                figura.area = figura.Areadelcuadrado(); //usando area
-                System.out.println("El area del cuadrado es = " + figura.area + " m2" );
-            }else if (opcion == 2) {
+            opcion = figura.sc.nextDouble();
+            if (opcion ==1) {
+                figura.area = figura.Areadelcuadrado();
+                System.out.print("El area del cuadrado es de "+figura.area+" m2\n");
+            } else if (opcion ==2) {
                 figura.area = figura.Areadelrectanguo();
-                System.out.println("El area del rectangulo es es = " + figura.area + " m2" );        
-            }else if (opcion == 3) {
+                System.out.print("El area del rectangulo es de "+figura.area+" m2\n");
+            } else if (opcion ==3) {
                 figura.area = figura.Areadelcirculo();
-                System.out.println("El area del circuloes es = " + figura.area + " m2" );
-            }else if (opcion == 4){
+                System.out.print("El area del circulo es de "+figura.area+" m2\n");
+            } else if (opcion ==4) {
                 figura.area = figura.Areadeltriangulo();
-                System.out.println("El area del triángulo es es = " + figura.area + " m2" );
-            }else {
-                //hacer Area Prisma
-                System.out.println("ERROR");
+                System.out.print("El area del triangulo es de "+figura.area+" m2\n");
+            } else {
+                System.out.print(" Error");
             }
-            System.out.print("¿ desea continuar S/N ? : ");
+            System.out.println("Desea volver a introducir los datos S/N?: ");
             respuesta = figura.sc.next().toUpperCase().charAt(0);
-            //if ((respuesta == 'N') && (respuesta == 'n')) //or and
             if (respuesta == 'N')
                 continuar = false;
             }
