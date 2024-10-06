@@ -15,6 +15,7 @@ public class App {
         //public static void metodo(){} // Aqui un ejemplo de lo que es un metodo/funcion.
         //"metodo" es el nombre de nuestro demtodo/funcion. Los "()" pueden o no llevar argumentos.
         //Dentro tendremos variables.
+        
         //Punto 2:
         //Punto 3:
         //Punto 4:
