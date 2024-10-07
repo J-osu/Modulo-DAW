@@ -1,6 +1,7 @@
 import java.util.Scanner;
 public class Ejer {
     public static void main(String[] args) throws Exception {
+
         //Punto 1:
         //1.1
         //System.out.println("Hola me llamo JOsue y voy a ser tu Dios :)");
@@ -180,7 +181,7 @@ public class Ejer {
         // int Kb = sc.nextInt();
         // double MB = Kb/conversion;
         // System.out.printf("%d Kb son %.2f MB.\n", Kb, MB);
-        // //
+        //
         //3.12
         // System.out.print("Introduce la nota del 1ºer trimestre: ");
         // double n1 = Double.parseDouble(sc.nextLine());
@@ -195,6 +196,7 @@ public class Ejer {
         //     System.out.println("Error inesperado con la nota calculada.");
         // }
         sc.close();
+        
         //Punto 4:
     }
 }
