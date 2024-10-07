@@ -11,6 +11,7 @@ public class Ejer24 {
     static double neto;
     static double retencion;
     public static void main(String[] args) throws Exception { 
+        //LLamamos a los metodos correspondientes.
         Ejer24.Datos();
         Ejer24.sueldobase();
         Ejer24.CalcularDietas();
@@ -19,6 +20,7 @@ public class Ejer24 {
         Ejer24.mostrarResultados();
     }
     public static void Datos(){
+        //Pedimos los datos del empleado.
         System.out.print("introduce tu nombre: ");
         Ejer24.nombre = Ejer24.sc.nextLine();
         System.out.print("Introduce tu cargo en la empresa(1-junior, 2-senior o 3-jefe de proyecto): ");
@@ -29,6 +31,7 @@ public class Ejer24 {
         Ejer24.estado = Ejer24.sc.nextInt();
     }
      public static void sueldobase(){
+        //Calculamos el sueldo base en funcion de la opcion elegida.
         sueldo = 0;
         if (cargo==1) {
             sueldo = 950;
@@ -39,12 +42,15 @@ public class Ejer24 {
         }
      }
      public static void CalcularDietas(){
+        //Se calcula el nº de dias por el pago por viaje.
        sueldodietas = dias * 30;
      }
      public static void CalcularSueldoBruto(){
+        //Calculamos el sueldo bruto.
         sueldobruto = sueldo+sueldodietas;
      }
      public static void Calcularretencion(){
+        //Calculamos la retencion y el precio neto.
         double irpf = 0;
         if (estado==1) {
             irpf = 0.25;
@@ -55,6 +61,7 @@ public class Ejer24 {
         neto = sueldobruto-retencion;
      }
      public static void mostrarResultados() {
+        //la tabla de la nomina con todos los datos solicitados.
         System.out.println("┌─────────────────────────────┐");
         System.out.println("│Nombre: "+nombre+"                 │");
         System.out.println("│Sueldo base: "+sueldo +" euros    │");
