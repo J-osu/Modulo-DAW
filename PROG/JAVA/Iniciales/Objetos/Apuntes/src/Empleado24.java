@@ -28,15 +28,9 @@ public class Empleado24 {
         Empleado24.estado = Empleado24.sc.nextInt();
     }
     public static void CalculoSalarial(){
+        Empleado24.CarcularSalarioBase();
         //Calculamos el salario del empleado con los datos proporcionados.
         sueldodietas = dias * 30;
-        sueldo = 0;
-        if (cargo==1) {
-            sueldo = 950;
-        } else if (cargo==2) {
-            sueldo = 1200;
-        } else if (cargo==3) {
-            sueldo = 1600; }
         sueldobruto = sueldo+sueldodietas;
         double irpf = 0;
         if (estado==1) {
@@ -45,6 +39,17 @@ public class Empleado24 {
             irpf= 0.20; }
         retencion = sueldobruto*irpf;
         neto = sueldobruto-retencion;
+     }
+     public static void CarcularSalarioBase(){
+        sueldo = 0;
+        if (cargo==1) {
+            sueldo = 950;
+        } else if (cargo==2) {
+            sueldo = 1200;
+        } else if (cargo==3) {
+            sueldo = 1600; } else{
+                System.out.println("Error, vuelve a introducir los datos");
+            }
      }
     public static void mostrarResultados() {
         //la tabla de la nomina con todos los datos solicitados.
