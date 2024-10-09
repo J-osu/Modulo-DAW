@@ -30,7 +30,7 @@ public class Ejer24 {
         System.out.print("Introduce tu estado civil(1-soltero o 2-casado): ");
         Ejer24.estado = Ejer24.sc.nextInt();
     }
-     public static void sueldobase(){
+    public static void sueldobase(){
         //Calculamos el sueldo base en funcion de la opcion elegida.
         sueldo = 0;
         if (cargo==1) {
@@ -41,15 +41,15 @@ public class Ejer24 {
             sueldo = 1600;
         }
      }
-     public static void CalcularDietas(){
+    public static void CalcularDietas(){
         //Se calcula el nº de dias por el pago por viaje.
        sueldodietas = dias * 30;
      }
-     public static void CalcularSueldoBruto(){
+    public static void CalcularSueldoBruto(){
         //Calculamos el sueldo bruto.
         sueldobruto = sueldo+sueldodietas;
      }
-     public static void Calcularretencion(){
+    public static void Calcularretencion(){
         //Calculamos la retencion y el precio neto.
         double irpf = 0;
         if (estado==1) {
@@ -60,7 +60,7 @@ public class Ejer24 {
         retencion = sueldobruto*irpf;
         neto = sueldobruto-retencion;
      }
-     public static void mostrarResultados() {
+    public static void mostrarResultados() {
         //la tabla de la nomina con todos los datos solicitados.
         System.out.println("┌─────────────────────────────┐");
         System.out.println("│Nombre: "+nombre+"                 │");
