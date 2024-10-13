@@ -1,6 +1,7 @@
 import java.util.Scanner;
 public class Venta {
     static Scanner sc = new Scanner(System.in);
+    //Aquí van los valores que se van a usar a nivel de clase.
     static int dia;
     static int entradas;
     static char respuesta;
@@ -8,7 +9,7 @@ public class Venta {
     static double total;
     static char continuar;
     public static void main(String[] args) throws Exception { 
-        //LLamamos al metodos que muestra los resultados.
+        //LLamamos al metodo que muestra los resultados.
         Venta.mostrarResultados();
     }
     public static void Datos(){
@@ -29,6 +30,9 @@ public class Venta {
     }
     public static void CalculoPreBase(){
         //Calculamos el precio base teniendo en cuenta los 2 días que este cambia.
+        //Si "dia" es "3" el precio base es de 5.
+        //Pero si es "4" el precio base es de 11 por ser un precio para parejas.
+        //Si no es ninguni de esos casos o si el dia 4 viene un cliente solo el precio sera de 8.
         preciobase = 0;
         if (dia==3) {
             preciobase = 5;
@@ -41,6 +45,7 @@ public class Venta {
     public static void Total(){
         //Realizamos todos los calculos con los datos obtenidos, el precio base y el descuento.
         double descuento = Venta.CalcularDtoTrajeta();
+        //En caso de que "dia" sea "4" calculará el total de un grupo impar de personas.
         if (dia==4) {
             int nparejas = entradas/2;
             int individual = entradas%2;
@@ -58,6 +63,7 @@ public class Venta {
         Venta.Datos();
         Venta.CalculoPreBase();
         Venta.Total();
+        //Aquí asociamos los numeros de la semana (menos el domingo)con su respectivo numero.
         String ndia = "";
         switch (dia) {
             case 1: ndia = "Lunes"; break;
