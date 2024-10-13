@@ -2,16 +2,13 @@ import java.util.Scanner;
 public class Venta {
     static Scanner sc = new Scanner(System.in);
     static int dia;
-    static int precio;
     static int entradas;
     static char respuesta;
-    static double individual;
+    static double preciobase;
     static double total;
+    static char continuar;
     public static void main(String[] args) throws Exception { 
-        //LLamamos a los metodos correspondientes.
-        Venta.Datos();
-        Venta.CalculoPreBase();
-        Venta.CalcularTotal();
+        //LLamamos al metodos que muestra los resultados.
         Venta.mostrarResultados();
     }
     public static void Datos(){
@@ -24,28 +21,62 @@ public class Venta {
         respuesta = Venta.sc.next().toUpperCase().charAt(0);
     }
     public static double CalcularDtoTrajeta(){
+        //Calculamos el porcentaje de descuento a aplicar en caso de poseer la tarjeta.
         double descuento = 0;
         if (respuesta =='S') {
             descuento = 0.1;
         } return descuento;
     }
     public static void CalculoPreBase(){
-        individual = 0;
+        //Calculamos el precio base teniendo en cuenta los 2 días que este cambia.
+        preciobase = 0;
         if (dia==3) {
-            individual = 5;
+            preciobase = 5;
+        } else if (dia==4) {
+            preciobase = 11;
         } else{
-            individual = 8;
+            preciobase = 8;
         }
     }
-    public static void CalcularTotal(){
+    public static void Total(){
+        //Realizamos todos los calculos con los datos obtenidos, el precio base y el descuento.
         double descuento = Venta.CalcularDtoTrajeta();
-        total = (individual*entradas)-(individual*descuento);
+        if (dia==4) {
+            int nparejas = entradas/2;
+            int individual = entradas%2;
+            total = (nparejas * 11) + (individual * 8);
+        } else {
+            total = preciobase*entradas;
+        }
+        total = total-(total*descuento);
     }
     
     public static void mostrarResultados() {
-        System.out.println("Día de la semana: "+dia);
+        //Ponemos los reltados a mostrar dentro de un bucle para que se repita.
+        //En este caso se el "do" es el bloque que se va a repetir si se cumple la condición.
+        do{
+        Venta.Datos();
+        Venta.CalculoPreBase();
+        Venta.Total();
+        String ndia = "";
+        switch (dia) {
+            case 1: ndia = "Lunes"; break;
+            case 2: ndia = "Martes"; break;
+            case 3: ndia = "Miercoles"; break;
+            case 4: ndia = "Jueves"; break;
+            case 5: ndia = "Viernes"; break;
+            case 6: ndia = "Sabado"; break;
+            default: ndia = "Día desconocido"; break;
+        }
+        //Pintamos los reltados en un ticket.
+        System.out.println("Día de la semana: "+ndia);
         System.out.println("Número de entradas: "+entradas);
-        System.out.println("El precio individual sin descuento es de: "+individual);
-        System.out.println("El precio total con descuento del: "+Venta.CalcularDtoTrajeta()+" es de: "+total);
+        System.out.println("El precio individual sin descuento es de: "+preciobase);
+        System.out.println("El precio total con descuento del: "+Venta.CalcularDtoTrajeta()*100+"% es de: "+total);
+        //L a condición a cumplir es "S" en caso de que continuar se marque con un "N" te soltará el mensaje predeterminado.
+        System.out.print("\n¿Desea realizar otra operación? (S/N): ");
+        continuar = sc.next().toUpperCase().charAt(0);
+        } while (continuar == 'S');
+        System.out.println("Gracias por venir. ¡Disfrute de la peli!");
     }
 }
