@@ -66,13 +66,20 @@ public class Venta {
         //Aquí asociamos los numeros de la semana (menos el domingo)con su respectivo numero.
         String ndia = "";
         switch (dia) {
-            case 1: ndia = "Lunes"; break;
-            case 2: ndia = "Martes"; break;
-            case 3: ndia = "Miercoles"; break;
-            case 4: ndia = "Jueves"; break;
-            case 5: ndia = "Viernes"; break;
-            case 6: ndia = "Sabado"; break;
-            default: ndia = "Día desconocido"; break;
+            case 1: ndia = "Lunes"; 
+            break;
+            case 2: ndia = "Martes"; 
+            break;
+            case 3: ndia = "Miercoles"; 
+            break;
+            case 4: ndia = "Jueves"; 
+            break;
+            case 5: ndia = "Viernes"; 
+            break;
+            case 6: ndia = "Sabado"; 
+            break;
+            default: ndia = "Día desconocido"; 
+            break;
         }
         //Pintamos los reltados en un ticket.
         System.out.println("Día de la semana: "+ndia);
