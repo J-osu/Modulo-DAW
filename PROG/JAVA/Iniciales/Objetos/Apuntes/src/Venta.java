@@ -6,8 +6,11 @@ public class Venta {
     static int entradas;
     static char respuesta;
     static double preciobase;
+    static double preciopareja = 11;
+    static double preciogrupo;
     static double total;
     static char continuar;
+    static String[] diasSemana = {"Día desconocido", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"};
     public static void main(String[] args) throws Exception { 
         //LLamamos al metodo que muestra los resultados.
         Venta.mostrarResultados();
@@ -36,23 +39,20 @@ public class Venta {
         preciobase = 0;
         if (dia==3) {
             preciobase = 5;
-        } else if (dia==4) {
-            preciobase = 11;
-        } else{
+        }else{
             preciobase = 8;
+        }
+    }
+    public static void CalculoGrupo(){
+        if (dia==4) {
+            int nparejas = entradas/2;
+            int individual = entradas%2;
+            preciogrupo = (nparejas * preciopareja) + (individual * preciobase);
         }
     }
     public static void Total(){
         //Realizamos todos los calculos con los datos obtenidos, el precio base y el descuento.
         double descuento = Venta.CalcularDtoTrajeta();
-        //En caso de que "dia" sea "4" calculará el total de un grupo impar de personas.
-        if (dia==4) {
-            int nparejas = entradas/2;
-            int individual = entradas%2;
-            total = (nparejas * 11) + (individual * 8);
-        } else {
-            total = preciobase*entradas;
-        }
         total = total-(total*descuento);
     }
     
@@ -62,29 +62,15 @@ public class Venta {
         do{
         Venta.Datos();
         Venta.CalculoPreBase();
+        Venta.CalculoGrupo();
         Venta.Total();
         //Aquí asociamos los numeros de la semana (menos el domingo)con su respectivo numero.
-        String ndia = "";
-        switch (dia) {
-            case 1: ndia = "Lunes"; 
-            break;
-            case 2: ndia = "Martes"; 
-            break;
-            case 3: ndia = "Miercoles"; 
-            break;
-            case 4: ndia = "Jueves"; 
-            break;
-            case 5: ndia = "Viernes"; 
-            break;
-            case 6: ndia = "Sabado"; 
-            break;
-            default: ndia = "Día desconocido"; 
-            break;
-        }
+        String ndia = (dia >= 1 && dia <= 6) ? diasSemana[dia] : diasSemana[0];
         //Pintamos los reltados en un ticket.
         System.out.println("Día de la semana: "+ndia);
         System.out.println("Número de entradas: "+entradas);
         System.out.println("El precio individual sin descuento es de: "+preciobase);
+        System.out.println("El precio de pareja sin descuento es de: "+preciopareja);
         System.out.println("El precio total con descuento del: "+Venta.CalcularDtoTrajeta()*100+"% es de: "+total);
         //L a condición a cumplir es "S" en caso de que continuar se marque con un "N" te soltará el mensaje predeterminado.
         System.out.print("\n¿Desea realizar otra operación? (S/N): ");
