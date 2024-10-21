@@ -5,6 +5,7 @@ public class Prueba1 {
     public static void main(String[] args) throws Exception { 
         // Prueba1.numerdo10();
         // Prueba1.numeroN();
+        Prueba1.bizzbuss();
         
     }
     public static void Clear(){
@@ -33,6 +34,23 @@ public class Prueba1 {
         }
         return suma;
         
+    }
+    public static void bizzbuss(){
+        System.out.print("Introduce un numero: ");
+        int num = sc.nextInt();
+        for (int i = 1; i<= num ; i++) {
+            boolean divisibleByThree = i % 3 == 0;
+            boolean divisibleByFive = i % 5 == 0;
+                if (divisibleByThree && divisibleByFive) {
+                    System.out.println("fizzbuzz");
+                } else if (divisibleByThree) {
+                    System.out.println("fizz");
+                } else if (divisibleByFive) {
+                    System.out.println("buzz");
+                } else {
+                    System.out.println(i);
+                }
+        }
     }
 
 }
