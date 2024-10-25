@@ -9,7 +9,7 @@ public class Prueba1 {
         // Prueba1.Clear();
         // Prueba1.bizzbuss();
         // Prueba1.Clear();
-        Prueba1.Entrada();
+        Prueba1.Ejercicio15();
     }
 
     public static void Clear(){
@@ -21,35 +21,13 @@ public class Prueba1 {
             System.out.flush();
       }
     }
+
     public static void numerdo10(){
         for (int i = 1; i < 11; i++) {
             System.out.println(i);
             }
     }
-
-    public static void ejer1(){
-        System.out.print("El multiplo: ");
-        int multiplo = Prueba1.sc.nextInt();
-        for (int i = 1; i <= 100; i++) {
-            if (i % multiplo == 0) {
-                System.out.println(i+", ");
-                i++;
-            }
-            }
-    }
-
-    public static void ejer2(){
-        System.out.print("El multiplo: ");
-        int multiplo = Prueba1.sc.nextInt();
-        int i = 0;
-        while (i<=100) {
-            if (i % multiplo == 0) {
-                System.out.print(i+", ");
-                i++;
-            }
-        }
-    }
-
+    
     public static void numeroN(){
         System.out.println("Introduce el valor de n: ");
         int n = Prueba1.sc.nextInt();
@@ -89,7 +67,30 @@ public class Prueba1 {
         }
     }
 
-    public static void Entrada(){
+    public static void ejer1(){
+        System.out.print("El multiplo: ");
+        int multiplo = Prueba1.sc.nextInt();
+        for (int i = 1; i <= 100; i++) {
+            if (i % multiplo == 0) {
+                System.out.println(i+", ");
+                i++;
+            }
+            }
+    }
+
+    public static void ejer2(){
+        System.out.print("El multiplo: ");
+        int multiplo = Prueba1.sc.nextInt();
+        int i = 0;
+        while (i<=100) {
+            if (i % multiplo == 0) {
+                System.out.print(i+", ");
+                i++;
+            }
+        }
+    }
+
+    public static void Ejercicio15(){
         System.out.print("Introduce un numero base: ");
         int n = sc.nextInt();
         System.out.print("Introduce un exponente: ");
@@ -101,6 +102,7 @@ public class Prueba1 {
         }
 
     }
+
     public static int exponente(int n, int exp){
         int producto = 1;
         for(int i = 1; i <= exp; i++){
@@ -109,6 +111,26 @@ public class Prueba1 {
         return producto;
     }
 
+    public static void Ejercicio16(){
+        System.out.print("Introduce un numero: ");
+        int numero = Prueba1.sc.nextInt();
+       for (int i = 2; i <= numero; i++){
+        if (esPrimo(i)) {
+            System.out.print( i+", ");
+        }
+       }
+    }
+
+    public static boolean esPrimo(int numero){
+        int i =2;
+        while (i <= numero -1) {
+            if (numero % i != 0) {
+                System.out.print("El numero "+numero+" es primo");
+            }
+            i++;
+        }
+        return true;
+    }
 
 
 }
