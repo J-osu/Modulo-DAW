@@ -71,12 +71,10 @@ public class Aleatorio{
                 continuar = false;
             }
         }
-        System.out.println("\nResultados:");
-        //Mostramos los resultados al finalizar.
-        System.out.println("Total de cartas seleccionadas: " + totalcartas); //cuenta todas las cartas sacadas.
-        System.out.println("Conteo de cartas J, Q y K: " + recuentofiguras); //recuento de veces que ha salido las especiales.
-        System.out.println("Valor mínimo obtenido: " + valorMin);
-        System.out.println("Valor máximo obtenido: " + valorMax);
+        System.out.println("\nMuestra de resultados:");
+        //Contamos las cartas especiales y el total de cartas sacadas.
+        System.out.println("Total de cartas seleccionadas: " + totalcartas + " Conteo de cartas J, Q y K: " + recuentofiguras);
+        System.out.println("Valor mínimo obtenido: " + valorMin + " Valor máximo obtenido: " + valorMax);
     }
 
     public static void Ejer5(){
