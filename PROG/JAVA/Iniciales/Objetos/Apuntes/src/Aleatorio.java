@@ -11,7 +11,7 @@ public class Aleatorio{
         Aleatorio.Clear();
         Aleatorio.Ejer6();
         Aleatorio.Clear();
-       Aleatorio.Ejer11();
+        Aleatorio.Ejer11();
     }
     public static void Clear(){
     //     System.out.println("");
