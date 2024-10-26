@@ -4,7 +4,7 @@ public class Aleatorio{
     public static Scanner sc = new Scanner(System.in);
     static Random random = new Random();
     public static void main(String[] args) throws Exception{
-       Aleatorio.Ejer5();
+       Aleatorio.Ejer6();
     }
     public static void Clear(){
     //     System.out.println("");
@@ -95,14 +95,35 @@ public class Aleatorio{
     }
 
     public static void Ejer6(){
-        System.out.println("algo");
+        System.out.println("Puedes adivinar el numero que tengo en mis datos?");
+        int secretonumero = random.nextInt(101);
+        int chances = 5;
+        while (chances > 0) {
+            System.out.print("Introduce un numero entre 0-100: ");
+            int numeroprobado = Aleatorio.sc.nextInt();
+            chances --;
+            if (secretonumero == numeroprobado) {
+                System.out.println("Diste en el clavo ^^");
+            } else if (secretonumero > numeroprobado) {
+                System.out.println("Es un numero mayor, te quedan " + chances + " intentos.");
+            } else {
+                System.out.println("Es un numero mas pequeño, te quedan " + chances + " intentos.");
+            }
+            if (chances == 0) {
+                System.out.println("A tu casa manco, que te has quedado sin intentos.");
+            }
+        }
     }
 
     public static void Ejer7(){
         System.out.println("Algo");
     }
     
-    public static void Ejer8(){
+    public static void Ejer9(){
+        System.out.println("no");
+    }
+
+    public static void Ejer11(){
         System.out.println("no");
     }
 }
