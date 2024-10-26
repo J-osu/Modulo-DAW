@@ -14,13 +14,13 @@ public class Aleatorio{
         Aleatorio.Ejer11();
     }
     public static void Clear(){
-    //     System.out.println("");
-    //     System.out.print("Desea continuar s/n: ");;
-    //     char n = Mat.sc.next().toLowerCase().charAt(0);
-    //     if (n == 's'){
-    //         System.out.print("\033[H\033[2J");
-    //         System.out.flush();
-    //   }
+        System.out.println("");
+        System.out.print("Desea continuar s/n: ");;
+        char n = Mat.sc.next().toLowerCase().charAt(0);
+        if (n == 's'){
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+      }
     }
 
     public static void Ejer2(){
@@ -117,7 +117,7 @@ public class Aleatorio{
                 System.out.println("Es un numero mas pequeño, te quedan " + chances + " intentos.");
             }
             if (chances == 0) {
-                System.out.println("A tu casa manco, que te has quedado sin intentos.");
+                System.out.println("\nA tu casa manco, que te has quedado sin intentos.");
                 //una respuesta en caso de perder los intentos.
             }
         }
