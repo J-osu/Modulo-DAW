@@ -24,28 +24,28 @@ public class Aleatorio{
     }
 
     public static void Ejer2(){
-        //hacer un programa que nos devuelva
-        //el total, recuento de J,K y Q y el maxymin que salga.
+        //Hacer un programa que nos devuelva
+        //El total, recuento de J,K y Q y el maxymin que salga.
         String[] palos = { "pica", "corazones", "diamantes", "treboles"};
-         //arrai que contiene los tipos de cartas.
+         //Arrai que contiene los tipos de cartas.
         String[] valores = { "A", "2","3", "4", "5", "6", "7", "8", "9","10", "J", "Q", "K"};
-        //arrai que contiene los valores de las cartas.
-        int totalcartas = 0; //Contamos el total de cartas.
-        int recuentofiguras = 0; //Contamos el recuento de cartas especiales.
-        int valorMax = Integer.MIN_VALUE; //Contamos el valor amaximo.
-        int valorMin = Integer.MAX_VALUE; //Contamos el valor minimo.
+        //Arrai que contiene los valores de las cartas.
+        int totalcartas = 0; //Cuento el total de cartas.
+        int recuentofiguras = 0; //Cuento el recuento de cartas especiales.
+        int valorMax = Integer.MIN_VALUE; //MIN.VALUE otorga un valor pequeño y lo sustituye por el primero que sea mayor.
+        int valorMin = Integer.MAX_VALUE; //MAX.VALUE otorga un valor grande y lo sustituye por el primero que sea menor.
         boolean continuar = true;
         while (continuar) {
             String palosselect = palos[random.nextInt(palos.length)];
-            //seleccionamos un palo de manera random de la arrai.
+            //Selecciono un palo de manera random de la arrai.
             String valorselect = valores[random.nextInt(valores.length)];
-            //seleccionamos un valor de manera random de la arrai.
+            //Selecciono un valor de manera random de la arrai.
             System.out.print("Haz seleccionado la carta -> " + valorselect + " de " + palosselect);
-            totalcartas ++; //el total de cartas incrementa en funcion de las veces que se generen.
+            totalcartas ++; //El total de cartas incrementa en funcion de las veces que se generen.
             if (valorselect.equals("J") || valorselect.equals("Q") || valorselect.equals("K")) {
-                recuentofiguras ++; //el numero de las figuras aumenta cada vez que se repite.
+                recuentofiguras ++; //El numero de las figuras aumenta cada vez que se repite.
             }
-            int valornum; //Establecemos un valor condicional a las cartas especiales.
+            int valornum; //Establesco un valor condicional a las cartas especiales.
             if (valorselect.equals("A")) {
                 valornum = 1;
             } else if (valorselect.equals("J")) {
@@ -64,7 +64,7 @@ public class Aleatorio{
                 valorMax = valornum;
             }
             System.out.println();
-            //Preguntamos para una siguiente tirada.
+            //le pregunto para una siguiente tirada.
             System.out.print("¿Desea continuar generando cartas antes de mostrar los resultados(s/n)? ");
             char respuesta = sc.next().toLowerCase().charAt(0);
             if (respuesta != 's') {
@@ -72,7 +72,7 @@ public class Aleatorio{
             }
         }
         System.out.println("\nMuestra de resultados:");
-        //Contamos las cartas especiales y el total de cartas sacadas.
+        //Contamos las cartas especiales, el total de cartas sacadas Y la carta de mayor y menor valor.
         System.out.println("Total de cartas seleccionadas: " + totalcartas + " Conteo de cartas J, Q y K: " + recuentofiguras);
         System.out.println("Valor mínimo obtenido: " + valorMin + " Valor máximo obtenido: " + valorMax);
     }
