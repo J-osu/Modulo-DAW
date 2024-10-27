@@ -71,7 +71,7 @@ public class Aleatorio{
                 continuar = false;
             }
         }
-        System.out.println("\nMuestra de resultados:");
+        System.out.println("\nToma tus resultados:");
         //Contamos las cartas especiales, el total de cartas sacadas Y la carta de mayor y menor valor.
         System.out.println("Total de cartas seleccionadas: " + totalcartas + " Conteo de cartas J, Q y K: " + recuentofiguras);
         System.out.println("Valor mínimo obtenido: " + valorMin + " Valor máximo obtenido: " + valorMax);
@@ -93,14 +93,13 @@ public class Aleatorio{
             }
         }
         double media = (double) sumanumero / 50; //realiza la media de todos los numeros sumados.
-        System.out.println("\n\nResultados generados:"); //muestra los resultados.
-        System.out.println("Máximo: " + valorMax);
-        System.out.println("Mínimo: " + valorMin);
+        System.out.println("\n\nAqui estan los resultados generados:"); //muestra los resultados.
+        System.out.println("Máximo: " + valorMax + " Mínimo: " + valorMin);
         System.out.println("Media: " + media);
     }
 
     public static void Ejer6(){
-        System.out.println("Puedes adivinar el numero que tengo en mis datos?"); //retamos al usuario.
+        System.out.println("A que no adivinas el numero que tengo entre manos, eh bobo?"); //retamos al usuario.
         int secretonumero = random.nextInt(101); //seleccionamos un numero random entre 0 y 100.
         int chances = 5; //establecemos el numero de intentos.
         while (chances > 0) {
@@ -110,9 +109,9 @@ public class Aleatorio{
             if (secretonumero == numeroprobado) {
                 System.out.println("Diste en el clavo ^^"); //una respuesta en caso de acertar.
             } else if (secretonumero > numeroprobado) {
-                System.out.println("Es un numero mayor, te quedan " + chances + " intentos.");
+                System.out.println("Es un numero mayor que " + numeroprobado + " te quedan " + chances + " intentos.");
             } else {
-                System.out.println("Es un numero mas pequeño, te quedan " + chances + " intentos.");
+                System.out.println("Es un numero mas pequeño que " + numeroprobado + " te quedan " + chances + " intentos.");
             }
             if (chances == 0) {
                 System.out.println("\nA tu casa manco, que te has quedado sin intentos.");
@@ -132,8 +131,8 @@ public class Aleatorio{
         do {
             numero = random.nextInt(51) * 2; // Genera un número par entre 0 y 100 al miltiplicar 50 por 2.
             System.out.print(numero + " ");
-            contador++; // incrementamos el contador de los números generados
-        } while (numero != 24);
+            contador++; // Incrementa el contador de los números generados
+        } while (numero != 24); //una vez que salga el 24 se detiene.
         System.out.println("\n\nCantidad de números generados: " + contador);
     }
 
@@ -164,9 +163,9 @@ public class Aleatorio{
                 sobresalientes++;
             }
         }
-        System.out.println("\n\nAqui tienes un resumen y recuento total:"); //imprimimos el resultado.
-        System.out.println("Suspensos: " + suspensos + " Suficientes: " + suficientes);
-        System.out.println("Bienes: " + bienes + " Notables: " + notables + " Sobresalientes: " + sobresalientes);
+        System.out.println("\n\nAqui tienes un resumen y recuento total:"); //Imprime el resultado.
+        System.out.println("Suspensos: " + suspensos + " Suficientes: " + suficientes + " Bienes: " + bienes);
+        System.out.println(" Notables: " + notables + " Sobresalientes: " + sobresalientes);
     }
 }
 
