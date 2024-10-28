@@ -1,4 +1,4 @@
-import java.util.Random; //importamos la utilieria random.
+import java.util.Random; //Importamos la utilieria random.
 import java.util.Scanner;
 public class Aleatorio{
     public static Scanner sc = new Scanner(System.in);
@@ -11,7 +11,11 @@ public class Aleatorio{
         Aleatorio.Clear();
         Aleatorio.Ejer6();
         Aleatorio.Clear();
+        Aleatorio.Ejer9();
+        Aleatorio.Clear();
         Aleatorio.Ejer11();
+        Aleatorio.Clear();
+        Aleatorio.Ejer12();
     }
     public static void Clear(){
         System.out.println("");
@@ -73,16 +77,16 @@ public class Aleatorio{
         }
         System.out.println("\nToma tus resultados:");
         //Contamos las cartas especiales, el total de cartas sacadas Y la carta de mayor y menor valor.
-        System.out.println("Total de cartas seleccionadas: " + totalcartas + " Conteo de cartas J, Q y K: " + recuentofiguras);
+        System.out.println("Total de cartas tiradas: " + totalcartas + " Conteo de cartas especiales J, Q y K: " + recuentofiguras + " que es una ");
         System.out.println("Valor mínimo obtenido: " + valorMin + " Valor máximo obtenido: " + valorMax);
     }
 
     public static void Ejer5(){
-        int sumanumero = 0; //guarda los numeros para sumarlos.
+        int sumanumero = 0; //Guarda los numeros para sumarlos.
         int valorMax = Integer.MIN_VALUE; //Contamos el valor maximo.
         int valorMin = Integer.MAX_VALUE; //Contamos el valor minimo.
         for (int i = 1; i <= 50 ; i++){
-            int numero = 100 + random.nextInt(100 + 1); //con esto incluye los valores 100 y 199.
+            int numero = 100 + random.nextInt(100 + 1); //Con esto incluye los valores 100 y 199.
             System.out.print(numero + " ");
             sumanumero += numero; 
             if (numero > valorMax) {
@@ -92,22 +96,22 @@ public class Aleatorio{
                 valorMin = numero;
             }
         }
-        double media = (double) sumanumero / 50; //realiza la media de todos los numeros sumados.
-        System.out.println("\n\nAqui estan los resultados generados:"); //muestra los resultados.
+        double media = (double) sumanumero / 50; //Realiza la media de todos los numeros sumados.
+        System.out.println("\n\nAqui estan los resultados generados:"); //Muestra los resultados.
         System.out.println("Máximo: " + valorMax + " Mínimo: " + valorMin);
         System.out.println("Media: " + media);
     }
 
     public static void Ejer6(){
-        System.out.println("A que no adivinas el numero que tengo entre manos, eh bobo?"); //retamos al usuario.
+        System.out.println("A que no adivinas el numero que tengo entre manos, eh bobo?"); //Retamos al usuario.
         int secretonumero = random.nextInt(101); //seleccionamos un numero random entre 0 y 100.
-        int chances = 5; //establecemos el numero de intentos.
+        int chances = 5; //Establecemos el numero de intentos.
         while (chances > 0) {
             System.out.print("Introduce un numero entre 0-100: ");
             int numeroprobado = Aleatorio.sc.nextInt();
             chances --; //el contador de intentos disminuye.
             if (secretonumero == numeroprobado) {
-                System.out.println("Diste en el clavo ^^"); //una respuesta en caso de acertar.
+                System.out.println("Diste en el clavo ^^"); //Una respuesta en caso de acertar.
             } else if (secretonumero > numeroprobado) {
                 System.out.println("Es un numero mayor que " + numeroprobado + " te quedan " + chances + " intentos.");
             } else {
@@ -144,28 +148,36 @@ public class Aleatorio{
         int sobresalientes = 0;
         System.out.println("Aqui tienes las 20 notas de la clase:");
         for (int i = 0; i < 20; i++) {
-            int nota = random.nextInt(11); // Genera un número aleatorio entre 0 y 10
+            double nota = random.nextInt(11); // Genera un número aleatorio entre 0 y 10
             // Se asigna una calificación basada en la nota y se actualiza el contador.
             if (nota < 5) {
-                System.out.print("Suspenso ");
+                System.out.print(nota);
                 suspensos++;
             } else if (nota == 5) {
-                System.out.print("Suficiente ");
+                System.out.print(nota);
                 suficientes++;
             } else if (nota <= 6) {
-                System.out.print("Bien ");
+                System.out.print(nota);
                 bienes++;
             } else if (nota <= 8) {
-                System.out.print("Notable ");
+                System.out.print(nota);
                 notables++;
-            } else {
-                System.out.print("Sobresaliente ");
+            } else if (nota == 10) {
+                System.out.print(nota);
                 sobresalientes++;
             }
         }
         System.out.println("\n\nAqui tienes un resumen y recuento total:"); //Imprime el resultado.
         System.out.println("Suspensos: " + suspensos + " Suficientes: " + suficientes + " Bienes: " + bienes);
         System.out.println(" Notables: " + notables + " Sobresalientes: " + sobresalientes);
+    }
+
+    public static void Ejer12() throws InterruptedException{
+        while (true) {
+            char caracter = (char) (random.nextInt(95)+32); // Genera un número aleatorio entre 32 y 126 y lo convierte en un carácter.
+            System.out.print(caracter); // Imprime los carácteres en pantalla.
+            Thread.sleep(1);
+        }
     }
 }
 
