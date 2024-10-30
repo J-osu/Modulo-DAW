@@ -5,17 +5,19 @@ public class Aleatorio{
     static Random random = new Random(); //creamos un objeto que genere valores aleatorios.
     public static void main(String[] args) throws Exception{
         //llamamos a la funcion correspondiente.
-        Aleatorio.Ejer2();
+        // Aleatorio.Ejer2();
+        // Aleatorio.Clear();
+        // Aleatorio.Ejer5();
+        // Aleatorio.Clear();
+        // Aleatorio.Ejer6();
+        // Aleatorio.Clear();
+        Aleatorio.Ejer7();
         Aleatorio.Clear();
-        Aleatorio.Ejer5();
-        Aleatorio.Clear();
-        Aleatorio.Ejer6();
-        Aleatorio.Clear();
-        Aleatorio.Ejer9();
-        Aleatorio.Clear();
-        Aleatorio.Ejer11();
-        Aleatorio.Clear();
-        Aleatorio.Ejer12();
+        // Aleatorio.Ejer9();
+        // Aleatorio.Clear();
+        // Aleatorio.Ejer11();
+        // Aleatorio.Clear();
+        // Aleatorio.Ejer12();
     }
     public static void Clear(){
         System.out.println("");
@@ -125,7 +127,30 @@ public class Aleatorio{
     }
 
     public static void Ejer7(){
-        System.out.println("Algo");
+        System.out.println("Hazte rico con La Quiniela:");
+        System.out.println("Partido\t Columna 1\t Columna 2\t Columna 3");
+        //Generamos apuestas para los 14 partidos.
+        for (int i = 1; i <= 14; i++) {
+            System.out.printf("%2d:\t", i);
+            for (int j = 1; j <= 3; j++) {
+                System.out.print(generaApuesta(random) + "\t\t"); //\t es para la tabulación en horizontal.
+            }
+            System.out.println();
+        }
+        System.out.print("\nLínea 15:\t"); //Generamos el pleno al quince
+        for (int j = 1; j <= 3; j++) {
+            System.out.print(generaApuesta(random) + "\t\t");
+        }
+        System.out.println();
+    }
+    public static String generaApuesta(Random random) {
+        int resultado = random.nextInt(3); //Generamos un número aleatorio entre 0 y 2
+        return switch (resultado) {
+            case 0 -> "1";  //Gana local.
+            case 1 -> "empate";  //Empate.
+            case 2 -> "2";  //Gana visitante.
+            default -> "";  //Lo pongo para evitar advertencias en amarillo.
+        };
     }
     
     public static void Ejer9(){
