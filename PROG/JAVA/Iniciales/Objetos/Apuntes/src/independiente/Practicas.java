@@ -1,13 +1,13 @@
 package independiente;
-import java.util.Arrays; //Importamos la utileria Arrays.
-import java.util.Random; //Importamos la utilieria random.
+import java.text.Normalizer; //Importamos la utileria Normalizer, se usa para eliminar acentos y diacríticos.
+import java.util.Arrays; //Importamos la utileria Arrays, proporciona una serie de métodos estáticos para manipular arrays.
 import java.util.Scanner;
 public class Practicas{
     public static Scanner sc = new Scanner(System.in);
-    static Random random = new Random(); //creamos un objeto que genere valores aleatorios.
     public static void main(String[] args) throws Exception{
         //llamamos a la funcion correspondiente.
         // Practicas.AnagramaPD();
+        Practicas.PalindromoPD();
     }
     public static void Clear(){
         System.out.println("");
@@ -37,6 +37,7 @@ public class Practicas{
     }
 
     public static void AnagramaPD(){
+        //Pedimos los datos.
         System.out.print("Introduce la 1ª palabra: ");
         String palabra1 = Practicas.sc.nextLine().toLowerCase(); //Pasamos las palabras introducidas a minuscula para evitar posibles fallos.
         System.out.print("Introduce la 2ª palabra: ");
@@ -58,6 +59,25 @@ public class Practicas{
         } else {
             System.out.println("Las palabras no son anagramas."); //Devolvemos mensaje en caso negativo.
         }
+    }
+
+    public static void PalindromoPD(){
+        //Pedimos los datos.
+        System.out.print("Introduce la 1ª palabra: ");
+        String palabra = Practicas.sc.nextLine().toLowerCase(); //Escanea la caneda de texto y los pasa a minuscula.
+        boolean espalindromo = Practicas.Palindromo(palabra);
+        if (espalindromo) {
+            System.out.println("Es un palíndromo."); //Si resulta ser un palindromo "verdadero" devuelve el mensaje.
+        } else {
+            System.out.println("No es un palíndromo."); //Si resulta no ser un palindromo "false "devuelve el mensaje.
+        }
+    }
+    public static boolean Palindromo(String palabra){
+        palabra = Normalizer.normalize(palabra, Normalizer.Form.NFD); //Separa los caracteres base de los diacriticos; ejem cación -> "cancion"-" ` ".
+        palabra =  palabra.replaceAll("[^\\p{ASCII}]", ""); // Eliminamos los acentos y caracteres especiales.
+        palabra =  palabra.replaceAll("[^a-z0-9]", ""); // Eliminamos todo lo que no sea letras o números.
+        String palabrareves = new StringBuilder(palabra).reverse().toString();
+        return palabra.equals(palabrareves); //Comparamos la palabra original con su reverso para ver si coinciden.
     }
 }
 
