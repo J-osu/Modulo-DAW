@@ -200,7 +200,7 @@ public class Aleatorio{
     public static void Ejer12() throws InterruptedException{
         while (true) {
             char caracter = (char) (random.nextInt(95)+32); // Genera un número aleatorio entre 32 y 126 y lo convierte en un carácter.
-            System.out.print(caracter); // Imprime los carácteres en pantalla.
+            System.out.print(caracter); //Imprime los carácteres en pantalla.
             Thread.sleep(1);
         }
     }
