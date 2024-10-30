@@ -5,19 +5,19 @@ public class Aleatorio{
     static Random random = new Random(); //creamos un objeto que genere valores aleatorios.
     public static void main(String[] args) throws Exception{
         //llamamos a la funcion correspondiente.
-        // Aleatorio.Ejer2();
-        // Aleatorio.Clear();
-        // Aleatorio.Ejer5();
-        // Aleatorio.Clear();
-        // Aleatorio.Ejer6();
-        // Aleatorio.Clear();
+        Aleatorio.Ejer2();
+        Aleatorio.Clear();
+        Aleatorio.Ejer5();
+        Aleatorio.Clear();
+        Aleatorio.Ejer6();
+        Aleatorio.Clear();
         Aleatorio.Ejer7();
         Aleatorio.Clear();
-        // Aleatorio.Ejer9();
-        // Aleatorio.Clear();
-        // Aleatorio.Ejer11();
-        // Aleatorio.Clear();
-        // Aleatorio.Ejer12();
+        Aleatorio.Ejer9();
+        Aleatorio.Clear();
+        Aleatorio.Ejer11();
+        Aleatorio.Clear();
+        Aleatorio.Ejer12();
     }
     public static void Clear(){
         System.out.println("");
