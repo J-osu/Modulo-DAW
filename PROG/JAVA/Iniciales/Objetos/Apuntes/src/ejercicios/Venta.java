@@ -1,3 +1,4 @@
+package ejercicios;
 import java.util.Scanner;
 public class Venta {
     static Scanner sc = new Scanner(System.in);

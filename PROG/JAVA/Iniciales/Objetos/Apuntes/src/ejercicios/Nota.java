@@ -1,3 +1,4 @@
+package ejercicios;
 import java.util.Scanner;
 public class Nota{
     public static Scanner sc = new Scanner(System.in);
