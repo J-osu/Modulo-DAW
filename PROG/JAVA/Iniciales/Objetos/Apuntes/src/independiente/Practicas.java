@@ -18,6 +18,7 @@ public class Practicas{
             System.out.flush();
       }
     }
+    
     public static void FizzBuzz(){
         System.out.print("Introduce un numero: ");
         int num = sc.nextInt(); //Escanea el texto intruducido y lo pasa a valor numerico int.
