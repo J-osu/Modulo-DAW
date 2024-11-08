@@ -2,16 +2,18 @@ package array;
 import java.util.Scanner;
 public class Array3 {
     static Scanner sc = new Scanner(System.in);
+    static int NUMEROPERSONAS = 5;
     static String NOMBRES[] = {"Luffy", "Zoro", "Nami", "Usopp", "Sanji"};
     static int TIRADAS = 10, tempContador;
     static int tiradas[] = new int[TIRADAS];
-    static int[] contador = new int[NOMBRES.length];
+    static int[] contador = new int[NUMEROPERSONAS];
+    static int[] MaxMin = new int[2];
     public static void main(String[] args) throws Exception {
         //Llama a la función correpomdiemte.
         Array3.tirada();
-        Array3.contador(contador);
-        Array3.generarOrden(contador);
-        Array3.imprimirResultados(contador);
+        Array3.contador();
+        Array3.generarOrden();
+        Array3.imprimirResultados();
     }
 
     public static void tirada(){
@@ -21,13 +23,14 @@ public class Array3 {
                 tiradas[i] = (int)(Math.random()*NOMBRES.length);
             }
     }
-    public static void contador(int[] contador){
+    public static void contador(){
         // función -> que genere un contador y además genere el máx. y el min.
         for ( int tirar : tiradas){
             //Cuenta las veces que sepiten las pociciones de NOMBRES.
-            contador[tirar] ++; 
+            contador[tirar] ++; //Incrementa el contador.
         }
         for (int i = 0; i < NOMBRES.length; i++) {
+            //Muestra NOMBRES y las veces que sale.
             System.out.println(NOMBRES[i] + ": " + contador[i] + " veces");
         }
         int valorMax = contador[0], valorMin = contador[0]; int pMax = 0, pMin = 0;
@@ -45,14 +48,19 @@ public class Array3 {
         System.out.println("El nombre con más apariciones es: " + NOMBRES[pMax] + " con " + valorMax + " veces" + " y el que menos es: " + NOMBRES[pMin] + " con: " + valorMin + " veces.");
         System.out.println("El premio de 1000$ es para: " + NOMBRES[pMax] + " con " + valorMax + " aparaciones");
         System.out.println();
-        // Array3.entregaPremios(pMax, valorMax, valorMin, pMin);
     }
 
-    // public static void entregaPremios(int pMax, int valorMax, int valorMin, int pMin){
-    //     System.out.println("El premio de 1000$ es para: " + pMax + " con " + valorMax + " aparaciones");
-    // }
+    public static int entregaPremios(){
+        int max = contador[0];
+        for (int i = 0; i>NUMEROPERSONAS; i++){
+            if (contador[i]> max) {
+                max = contador[i];
+            }
+        }
+        return max;
+    }
 
-    public static void generarOrden(int[] contador){
+    public static void generarOrden(){
         //función-> que ordeneel array de NOMBRES en base al contador.
         for (int i = 0; i < NOMBRES.length - 1; i++) {
             //mediante el metodo burbuja se intercambian los valores para reordenarlos.
@@ -71,7 +79,7 @@ public class Array3 {
         }
         System.out.println();           
     }
-    public static void imprimirResultados(int[] contador){
+    public static void imprimirResultados(){
         // función -> imprimir los resultados por pantalla.
         System.out.println("Resultados una vez ordenados serian los siguientes:");
         for (int i = 0; i < NOMBRES.length; i++) {
