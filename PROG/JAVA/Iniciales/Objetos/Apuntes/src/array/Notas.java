@@ -56,9 +56,15 @@ public class Notas {
         System.out.println();
         System.out.println("------ Notas ordenadas de menor a mayor --------------");
         System.out.println();
+        System.out.printf("%-20s", "");
+        for (int i=0; i<MODULOS; i++){
+            System.out.printf("%-20s", modulos[i] + "  ");
+        }
+        System.out.println();
         for (int i = 0; i < ALUMNOS; i++) {
+            System.out.printf("%-22s", alumnos[i] + "   ");
             for (int j = 0; j < MODULOS; j++) {
-                System.out.print(notas[i][j] + " ");
+                System.out.printf("%-20s", notas[i][j] + " ");
             }
             System.out.println();
         }
