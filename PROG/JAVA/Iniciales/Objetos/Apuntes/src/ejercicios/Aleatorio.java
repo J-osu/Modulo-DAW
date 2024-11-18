@@ -1,3 +1,4 @@
+package ejercicios;
 import java.util.Random; //Importamos la utilieria random.
 import java.util.Scanner;
 public class Aleatorio{
