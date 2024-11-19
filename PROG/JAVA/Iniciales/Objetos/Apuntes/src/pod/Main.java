@@ -10,5 +10,7 @@ public class Main {
         // System.out.println("Vehiculo: " + v1.getMarca() + " " + v1.getModelo());
         v1.Inf();
         System.out.println(v1);
+        
+        
     }
 }
