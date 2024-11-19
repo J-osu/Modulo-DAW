@@ -13,14 +13,29 @@ public class Vehiculo {
 
     private String marca;
     private String modelo;
+    private String color;
+    private int velocidad;
+    private int potencia;
 
     // Los setters son los responsable de modificar cada clase.
     public void setMarca(String marca){
         this.marca = marca.toUpperCase();
     }
 
-    public void setModelo(String nombre){
+    public void setModelo(String modelo){
         this.modelo.toUpperCase();
+    }
+
+    public void setColor(String color){
+        this.color = color.toUpperCase();
+    }
+
+    public void setVelocidad(int velocidad){
+        this.velocidad = velocidad;
+    }
+
+    public void setPotencia(int potencia){
+        this.potencia = potencia;
     }
 
     // Los getters responsable de leer las propiedades de clase.
@@ -32,9 +47,22 @@ public class Vehiculo {
         return this.modelo.toLowerCase();
     }
 
+    public String getColor(){
+        return this.color.toLowerCase();
+    }
+
+    public int getVelocidad(){
+        return this.velocidad;
+    }
+
+    public int getPotencia(){
+        return this.potencia;
+    }
+
     // Visualización de la clase.
     public void Inf(){
-        System.out.println("Vehiculo: " + this.getMarca() + " " + this.getModelo());
+        System.out.println("Vehiculo: " + this.getMarca() + " " + this.getModelo()
+        + this.getColor() + this.getVelocidad() + this.getPotencia());
     }
 
     public String toString(){
