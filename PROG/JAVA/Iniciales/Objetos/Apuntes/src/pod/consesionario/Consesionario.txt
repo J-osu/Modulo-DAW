@@ -1,0 +1,40 @@
+package pod.consesionario;
+import java.util.Scanner;
+
+import pod.consesionario.Vehiculo;
+public class Consesionario {
+    static int NVEHICULOS = 2;
+    static Scanner sc = new Scanner(System.in);
+    static Vehiculo[] vehiculos = new Vehiculo[NVEHICULOS];
+    public static void main (String[] args){
+        String marca, modelo; int velocidad;
+        for(int i=0; i<NVEHICULOS; i++){
+            System.out.println("Marca vehiculos " + (i+1) + " : ");
+            marca = sc.next();
+            System.out.println("Modelo vehiculos " + (i+1) + " : ");
+            modelo = sc.next();
+            System.out.println("Velocidad vehiculos " + (i+1) + " : ");
+            velocidad = sc.nextInt();
+            vehiculos[i] = new Vehiculo(marca, modelo, velocidad);
+            System.out.println();
+        }
+        for(int i=0; i<NVEHICULOS; i++){
+            System.out.println(vehiculos[i]);
+        }
+
+        // Vehiculo v1 = new Vehiculo("peugeot", "3000", 90);
+        // Vehiculo v2 = new Vehiculo("Audi", "A3", 200);
+        // Vehiculo v3 = new Vehiculo("Mercedes", "CLA", 150);
+        
+        // System.out.println(v1);
+        // System.out.println(v2);
+        // System.out.println(v3);
+        // v1.setMarca("Seat");
+        // v1.setModelo("A3");
+        // Vehiculo v2 = new Vehiculo();
+
+        // System.out.println("Vehiculo: " + v1.getMarca() + " " + v1.getModelo());
+        // v1.Inf();
+        // System.out.println(v1);
+    }
+}

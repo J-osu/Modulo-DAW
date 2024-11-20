@@ -1,4 +1,4 @@
-package pod;
+package pod.consesionario;
 
 public class Moto {
     private int nruedas;

@@ -1,5 +1,5 @@
-package pod;
-import pod.Moto;
+package pod.consesionario;
+import pod.consesionario.Moto;
 public class Camion {
     private int nejes;
 

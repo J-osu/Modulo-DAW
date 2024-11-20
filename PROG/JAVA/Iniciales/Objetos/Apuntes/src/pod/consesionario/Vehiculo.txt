@@ -1,4 +1,4 @@
-package pod;
+package pod.consesionario;
 
 public class Vehiculo {
     // Una clase tiene propiedades y métodos.
@@ -10,6 +10,10 @@ public class Vehiculo {
         pero en la clase cliente no.
         No se deben modificar las propiedades desde el cliente (exterior).
      */
+    /*******************REGLAS DE NEGOCIO********
+     marca y modelo se guardan en mayuscula y se devuelven en minuscula.
+     velocidad debe ser < 100.
+     */
 
     private String marca;
     private String modelo;
@@ -17,21 +21,47 @@ public class Vehiculo {
     private int velocidad;
     private int potencia;
 
+    //===========================================================================
+
+    // Se puede repetir el nombre de métodos, los diferencia por el NUMERO y el TIPO de los argumentos.
+    //========================== METODOS CONSTRUCTORES =========================
+    // Consturctor vacio.
+    public Vehiculo(){ }
+        // Lo único que hace es crear el objeto vacio.
+        // Sin referenciar las propiedades.
+    
+    // Constructor con parámetros para inicializar sus propiedades.
+    public Vehiculo(String marca, String modelo, int velocidad){
+        // this.velocidad = velocidad;
+        // this.marca = marca;
+        // this.modelo = modelo;
+        this.setMarca(marca);
+        this.setModelo(modelo);
+        this.setVelocidad(velocidad);
+    }
+
+    //================= METODOS DE MODIFICACIÓN =============================
     // Los setters son los responsable de modificar cada clase.
+    // En los set en donde se expresan las condiciones.
     public void setMarca(String marca){
         this.marca = marca.toUpperCase();
     }
 
     public void setModelo(String modelo){
-        this.modelo.toUpperCase();
+        this.modelo = modelo.toUpperCase();
     }
 
     public void setColor(String color){
         this.color = color.toUpperCase();
     }
 
-    public void setVelocidad(int velocidad){
-        this.velocidad = velocidad;
+    public void setVelocidad(int velocidad){ // Condiciones.
+        if (velocidad < 100) {
+            this.velocidad = 100;
+            System.out.println("Error en velocidad, asigna xdef velocidad mínima.");
+        } else{
+            this.velocidad = velocidad;
+        }
     }
 
     public void setPotencia(int potencia){
@@ -59,6 +89,7 @@ public class Vehiculo {
         return this.potencia;
     }
 
+    //============================ IMPRESION DE DATOS ========================
     // Visualización de la clase.
     public void Inf(){
         System.out.println("Vehiculo: " + this.getMarca() + " " + this.getModelo()
@@ -67,7 +98,7 @@ public class Vehiculo {
 
     public String toString(){
         String info;
-        info = " Vehiculo: " + this.getMarca() + " " + this.getModelo();
+        info = " Vehiculo{ \n" + " Marca: " + this.getMarca() + " \n" + " Modelo:" + this.getModelo() + " \n" + this.getVelocidad() + " km\n";
         return info;
     }
 }
