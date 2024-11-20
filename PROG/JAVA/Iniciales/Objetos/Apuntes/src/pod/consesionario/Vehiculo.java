@@ -18,8 +18,9 @@ public class Vehiculo {
         this.setVelocidad(velocidad);
     }
     // 3- Metodos funcionales -> comportamiento.
-    public double kmDia(){
-
+    public double kmDia(int dia){
+        
+        return this.kmSemana(dia);
     }
 
     public void generarKmSemana(){

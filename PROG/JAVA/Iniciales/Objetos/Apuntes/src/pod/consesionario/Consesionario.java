@@ -30,11 +30,11 @@ public class Consesionario {
     public static void LecturaVehiculos(){
         String marca, modelo; int velocidad;
         for(int i=0; i<NVEHICULOS; i++){
-            System.out.println("Marca vehiculos " + (i+1) + " : ");
+            System.out.print("Marca vehiculos " + (i+1) + " : ");
             marca = sc.next();
-            System.out.println("Modelo vehiculos " + (i+1) + " : ");
+            System.out.print("Modelo vehiculos " + (i+1) + " : ");
             modelo = sc.next();
-            System.out.println("Velocidad vehiculos " + (i+1) + " : ");
+            System.out.print("Velocidad vehiculos " + (i+1) + " : ");
             velocidad = sc.nextInt();
             vehiculos[i] = new Vehiculo(marca, modelo, velocidad);
             System.out.println();
