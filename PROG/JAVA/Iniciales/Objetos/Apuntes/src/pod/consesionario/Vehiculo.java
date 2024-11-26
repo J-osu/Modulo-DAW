@@ -19,8 +19,8 @@ public class Vehiculo {
     }
     // 3- Metodos funcionales -> comportamiento.
     public double kmDia(int dia){
-        
-        return this.kmSemana(dia);
+        // d = getindexSemane('Jueves');
+        return this.kmSemana[dia];
     }
 
     public void generarKmSemana(){

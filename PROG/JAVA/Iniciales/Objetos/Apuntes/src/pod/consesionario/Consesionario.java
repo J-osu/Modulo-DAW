@@ -1,7 +1,6 @@
 package pod.consesionario;
 import java.util.Scanner;
 
-import pod.consesionario.Vehiculo;
 public class Consesionario {
     static int NVEHICULOS = 2;
     static Scanner sc = new Scanner(System.in);
