@@ -58,7 +58,7 @@ public class Biblioteca {
         }
     }
     public static void ImprimirLibros() {
-        System.out.println("\nLista de libros:");
+        System.out.println("Lista de libros:");
         for (int i = 0; i < NLIBROS; i++) {
             System.out.println(listaLibro[i]);
         }
