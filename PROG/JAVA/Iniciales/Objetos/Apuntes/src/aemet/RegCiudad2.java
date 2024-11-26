@@ -68,7 +68,7 @@ public class RegCiudad2 {
             System.out.printf("%15s",this.dias[i]+" ");
         }
         System.out.println();
-        System.out.printf("10s","");
+        System.out.printf("%10s","");
 
         for(int i =0; i<NDIAS; i++){
             temp ="";
