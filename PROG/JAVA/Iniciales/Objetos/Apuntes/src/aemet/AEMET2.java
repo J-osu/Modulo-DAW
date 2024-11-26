@@ -3,13 +3,17 @@ import java.util.Scanner;
 import aemet.RegCiudad2;
 
 public class AEMET2 {
-    static Scanner sc = new Scanner(System.in);
-    static final int NCIUDADES = 8;
-    public static String[] ciudades = {"Almeria", "Sevilla", "Granada", "Cordoba", "Cadiz", "Huelva", "Jaen", "Malaga"};
+    public static final int NCIUDADES = 3;
+    private static String[] ciudades = { "Almeria", "Granada", "Cadiz", "Malaga", "Jaen", "Cordoba", "Huelva", "Sevilla"};
+   
+    public static Scanner sc = new Scanner(System.in); 
+    
     public static RegCiudad2[] regTemperaturas = new RegCiudad2[NCIUDADES];
+ 
 
-    public static void main(String[] args) {
+    public static void main (String[] args){
         // AEMET2.GenerarRegitroTemp();
+        AEMET2.ListarRegistroTemperaturas();
     }
 
     // public static void GenerarRegitroTemp(){
@@ -21,9 +25,9 @@ public class AEMET2 {
     //         System.out.print("  Vmin: ");
     //         vmin = AEMET2.sc.nextInt();
     //         AEMET2.regTemperaturas[i] = new RegCiudad2(ciudades[i], vmin, vmax);
+
     //     }
     // }
-
     public static void ListarRegistroTemperaturas(){
         for (int i=0; i<NCIUDADES; i++){
             AEMET2.regTemperaturas[i].mostrarTabla();
