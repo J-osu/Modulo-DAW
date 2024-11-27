@@ -27,30 +27,7 @@ public class Biblioteca {
         }
     }
 
-    public static void AddLibros() {
-        String titulo;
-        int año;
-        for (int i = 0; i < NLIBROS; i++) {
-            System.out.print("Título del libro " + (i + 1) + ": ");
-            titulo = sc.next();
-            System.out.print("Año del libro " + (i + 1) + ": ");
-            año = sc.nextInt();
-            System.out.println("Seleccione un autor para este libro:");
-            for (int j = 0; j < NAUTORES; j++) {
-                if (listaAutor[j] != null) { // Verifica que el autor no sea null
-                    System.out.println((j + 1) + ". " + listaAutor[j].getNombreCita());
-                } else {
-                    System.out.println((j + 1) + ". [Autor no inicializado]");
-                }
-            }
-            int autorSeleccionado = sc.nextInt() - 1;
-            if (autorSeleccionado < 0 || autorSeleccionado >= NAUTORES || listaAutor[autorSeleccionado] == null) {
-                System.out.println("Selección inválida. Asignando el primer autor por defecto.");
-                autorSeleccionado = 0;
-            }
-            listaLibro[i] = new Libro(titulo, listaAutor[autorSeleccionado], año);
-        }
-    }
+    
 
     public static void ImprimirAutores(){
         for(int i=0; i<NAUTORES; i++){
@@ -81,7 +58,7 @@ public class Biblioteca {
             Biblioteca.AddAutores();
         }
         else if (opcion==2){
-            Biblioteca.AddLibros();
+            // Biblioteca.AddLibros();
         }
     }
 }
