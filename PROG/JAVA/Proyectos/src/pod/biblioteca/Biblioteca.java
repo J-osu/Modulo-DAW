@@ -1,12 +1,15 @@
 package pod.biblioteca;
 import java.util.Scanner;
+import java.util.ArrayList; 
 
 public class Biblioteca {
     static Scanner sc = new Scanner(System.in);
     static int NAUTORES = 1;
     static int NLIBROS = 1;
-    static Autor[] listaAutor = new Autor[NAUTORES];
-    static Libro[] listaLibro = new Libro[NLIBROS];
+    static Autor[] autor = new Autor[NAUTORES];
+    static ArrayList<String> listaAutores = new ArrayList<>();
+    static Libro[] libro = new Libro[NLIBROS];
+    static ArrayList<String> listaLibros = new ArrayList<>();
     public static void main(String[] args) {
         Biblioteca.menuLibro();
         Biblioteca.ImprimirAutores();
@@ -23,7 +26,7 @@ public class Biblioteca {
             apellido2 = sc.next();
             System.out.print("Email del autor " + (i+1) + " : ");
             email = sc.next();
-            listaAutor[i] = new Autor(nombre, apellido1, apellido2, email);
+            autor[i] = new Autor(nombre, apellido1, apellido2, email);
         }
     }
 
@@ -31,13 +34,13 @@ public class Biblioteca {
 
     public static void ImprimirAutores(){
         for(int i=0; i<NAUTORES; i++){
-            System.out.println(listaAutor[i]);
+            System.out.println(autor[i]);
         }
     }
     public static void ImprimirLibros() {
         System.out.println("Lista de libros:");
         for (int i = 0; i < NLIBROS; i++) {
-            System.out.println(listaLibro[i]);
+            System.out.println(libro[i]);
         }
     }
 
