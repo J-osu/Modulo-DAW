@@ -65,7 +65,7 @@ public class Autor {
 
     public String toString(){
         String info;
-        info = "ID: " + this.getId() + " " + this.getNombre() + " " + this.getApellido1() + " " + this.getApellido2() + " " + this.getEmail();
+        info = "ID: " + this.getId() + " " + this.getNombre() + " " + this.getApellido1() + " " + this.getApellido2();
         return info;
     }
 }

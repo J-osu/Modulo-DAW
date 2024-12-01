@@ -6,13 +6,10 @@ public class Biblioteca {
     static Scanner sc = new Scanner(System.in);
     static int NAUTORES = 1;
     static int NLIBROS = 1;
-    static Autor[] autor = new Autor[NAUTORES];
-    static ArrayList<String> listaAutores = new ArrayList<>();
-    static Libro[] libro = new Libro[NLIBROS];
-    static ArrayList<String> listaLibros = new ArrayList<>();
+    static ArrayList<Autor> listaAutores = new ArrayList<>();
+    static ArrayList<Libro> listaLibros = new ArrayList<>();
     public static void main(String[] args) {
         Biblioteca.menuLibro();
-        Biblioteca.ImprimirAutores();
     }
 
     public static void AddAutores(){
@@ -26,21 +23,50 @@ public class Biblioteca {
             apellido2 = sc.next();
             System.out.print("Email del autor " + (i+1) + " : ");
             email = sc.next();
-            autor[i] = new Autor(nombre, apellido1, apellido2, email);
+            listaAutores.add(new Autor (nombre, apellido1, apellido2, email));
         }
     }
 
-    
-
-    public static void ImprimirAutores(){
-        for(int i=0; i<NAUTORES; i++){
-            System.out.println(autor[i]);
+    public static void ListarAutores(){
+        System.out.println("Lista de autores:");
+        for (int i = 0; i < listaAutores.size(); i++) {
+            System.out.println((i + 1) + ". " + listaAutores.get(i));
         }
     }
-    public static void ImprimirLibros() {
-        System.out.println("Lista de libros:");
+
+    public static void AddLibros(){
+        String titulo =""; int año; int autorID;
         for (int i = 0; i < NLIBROS; i++) {
-            System.out.println(libro[i]);
+            System.out.print("Título del libro " + (i + 1) + ": ");
+            titulo = sc.nextLine();
+            System.out.print("Año de publicación del libro " + (i + 1) + ": ");
+            año = sc.nextInt();
+            sc.nextLine();
+            System.out.println("Seleccione el autor del libro:");
+            ListarAutores();
+            System.out.print("Ingrese el ID del autor para el libro " + (i + 1) + ": ");
+            autorID = sc.nextInt() - 1;
+            sc.nextLine();
+
+            if (autorID >= 0 && autorID < listaAutores.size()) {
+                Autor autorSeleccionado = listaAutores.get(autorID);
+                listaLibros.add(new Libro(titulo, autorSeleccionado, año));
+                System.out.println("Libro añadido con éxito.\n");
+            } else {
+                System.out.println("Selección inválida. No se pudo añadir el libro.");
+            }
+        }
+    }
+
+    public static void ListarLibros() {
+        if (listaLibros.isEmpty()) {
+            System.out.println("No hay libros registrados.");
+            return;
+        }
+
+        System.out.println("Lista de libros:");
+        for (int i = 0; i < listaLibros.size(); i++) {
+            System.out.println((i + 1) + ". " + listaLibros.get(i));
         }
     }
 
@@ -61,7 +87,13 @@ public class Biblioteca {
             Biblioteca.AddAutores();
         }
         else if (opcion==2){
-            // Biblioteca.AddLibros();
+            Biblioteca.AddLibros();
+        }
+        else if (opcion==3){
+            Biblioteca.ListarAutores();
+        }
+        else if (opcion==4){
+            Biblioteca.ListarLibros();
         }
     }
 }
