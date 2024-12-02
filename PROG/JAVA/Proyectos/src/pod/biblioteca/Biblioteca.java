@@ -71,6 +71,7 @@ public class Biblioteca {
     }
 
     public static void menuLibro(){
+
         System.out.println("Menú de libros:");
         System.out.println("==========================");
         System.out.println("1- Añadir autores.");

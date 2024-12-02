@@ -20,8 +20,8 @@ public class Autor {
     //================= Métodos funcionales ================
 
     public int GenID(){
-        int digito1=(int)(Math.random()*10000000);
-        return digito1;
+        int digito =(int)(Math.random()*10000000);
+        return digito;
     }
     public String getNombreCita() {
         return this.apellido1 + " " + this.apellido2 + ", " + this.nombre;
@@ -65,7 +65,7 @@ public class Autor {
 
     public String toString(){
         String info;
-        info = "ID: " + this.getId() + " " + this.getNombre() + " " + this.getApellido1() + " " + this.getApellido2();
+        info = "ID: " + this.getId() + " " + this.getNombreCita();
         return info;
     }
 }

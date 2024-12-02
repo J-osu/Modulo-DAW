@@ -9,7 +9,7 @@ public class Libro {
 
     //=================== Constructor =======================
     public Libro(String titulo, Autor autor, int año) {
-        this.codigo = Utilidades.generarCodigoLibro(autor); // Código generado por la clase Utilidades
+        this.codigo = Utilidades.generarCodigoLibro(autor);
         this.titulo = titulo;
         this.autor = autor;
         this.año = año;
