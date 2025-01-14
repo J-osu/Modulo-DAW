@@ -7,20 +7,33 @@ body {
 
 /* Encabezado estilizado con vh para la altura */
 header {
-    background-color: #4CAF50;
+    background-color: #9de9a0;
     color: white;
     text-align: center;
     height: 20vh; /* 15% de la altura del viewport */
-    position: sticky;
-    top: 0;
     z-index: 1000;
     padding: 15px 7%;
+    
+}
+
+li{
+    list-style: none;
+    display: inline;
+}
+
+a{
+    color: #0c7326;
+    text-decoration: none;
+}
+
+header a:hover{
+    color: #1bb7e2;
 }
 
 /* Sección principal estilizada con vh y vw */
 main {
     background-color: #ffffff;
-    padding: 5vw; /* 5% del ancho del viewport */
+    padding: 2vw; /* 5% del ancho del viewport */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: auto;
     text-align: center;
@@ -70,14 +83,19 @@ footer {
     background-color: #219636;
     color: white;
     text-align: center;
-    height: 5vh; /* 10% de la altura del viewport */
-    line-height: 5vh; /* Centrado vertical del texto */
+    height: 21vh; /* 10% de la altura del viewport */
+    line-height: 3.5vh; /* Centrado vertical del texto */
+}
+
+footer li{
+    margin-right: 50;
+    display: inline;
 }
 
 footer a {
-    color: #17cf45;
+    color: #79ec96;
     text-decoration: none;
-    margin: 500 1vw;
+    margin: 0 1vw;
     
 }
 
