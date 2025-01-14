@@ -1,0 +1,174 @@
+:root{
+    --width: 100%;
+    --color-primario: #FFFFFF;
+    --color-secundario: #FF7F32;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.contenedor{
+    width: var(--width);
+    height: 150vh;
+    background-color: #D0D0D0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-content{
+    width: var(--width);
+    max-width: 450px;
+    background-color: #2C2F35;
+    padding: 50px 60px 70px;
+    text-align: center;
+    border-radius: 25px;
+}
+
+.form-content h1{
+    font-size: 30px;
+    margin-bottom: 60px;
+    color: var(--color-primario);
+    position: relative;
+}
+
+.form-content h1::after{
+    content: '';
+    width: 30px;
+    height: 4px;
+    border-radius: 3px;
+    background:var(--color-secundario);
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.input-field {
+    background-color: #515966;
+    margin: 15px 0;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    transition: max-height 0.5s;
+    overflow: hidden;
+}
+
+.input-field i {
+    margin: 10px;
+    margin-left: 15px;
+    color: var(--color-secundario);
+}
+
+
+input {
+    width: var(--width);
+    background: transparent;
+    border: 0;
+    outline: none;
+    padding: 18px 15px;
+    color: var(--color-primario);
+}
+
+input::placeholder {
+    color: var(--color-primario);
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaciado entre las opciones */
+  }
+  
+  .radio-group input[type="radio"] {
+    margin: 0 2px 0 0; /* Ajusta el espaciado entre el botón y la etiqueta */
+  }
+  
+  .radio-group label {
+    margin: 0;
+    color: var(--color-primario); /* Asegúrate de que el texto de la etiqueta sea visible */
+  }
+
+  .input-label {
+    margin-bottom: 3px; /* Espacio entre la etiqueta y el campo de entrada */
+    color: var(--color-primario);
+    font-size: 14px; /* Ajusta el tamaño de la fuente según tus necesidades */
+    display: block;
+}
+
+.check-group {
+    display: flex; /* Usamos flexbox para organizar los checkboxes en una fila */
+    align-items: center; /* Centra los elementos verticalmente */
+    gap: 0.4px; /* Ajusta el espacio entre las casillas de verificación y las etiquetas */
+}
+
+.check-group input[type="checkbox"] {
+    margin: 0; /* Elimina el margen entre las casillas */
+}
+
+.check-group label {
+    margin: 0; /* Elimina el margen de las etiquetas */
+    color: var(--color-primario); /* Asegúrate de que el texto sea blanco */
+    font-size: 14px; /* Ajusta el tamaño de la fuente según sea necesario */
+}
+.check-group i {
+    margin-right: 4px; /* Espaciado entre el ícono y el checkbox */
+    color: var(--color-secundario); /* Cambia el color del ícono si lo deseas */
+}
+
+form p {
+    color: var(--color-primario);
+    text-align: left;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+form a {
+    color: var(--color-secundario);
+    margin-left: 5px;
+}
+
+.btn-field {
+    width: var(--width);
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.btn-field button {
+    flex-basis: 48%;
+    font-size: 16px;
+    background-color: var(--color-secundario);
+    color: var(--color-primario);
+    height: 40px;
+    border-radius: 10px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: background 1s;
+}
+
+.btn-field button.disable{
+    background-color: #EAEAEA;
+    color: #2C2F35;
+}
+.btn-field .submitBtn {
+    background-color: #FF6F61; /* Cambia el color de fondo del botón si lo deseas */
+    color: var(--color-primario);
+    font-size: 16px;
+    padding: 5px 5px; /* Ajusta el tamaño del botón */
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    width: var(--width); /* Ocupa todo el ancho disponible en su contenedor */
+}
+
+.btn-field .submitBtn:hover {
+    background-color: #9E2A2F; /* Cambio de color cuando el botón está en hover */
+}

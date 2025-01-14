@@ -1,0 +1,106 @@
+/* Estilos generales para la página */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e2dada;
+}
+
+/* Encabezado estilizado con vh para la altura */
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    height: 20vh; /* 15% de la altura del viewport */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 15px 7%;
+}
+
+/* Sección principal estilizada con vh y vw */
+main {
+    background-color: #ffffff;
+    padding: 5vw; /* 5% del ancho del viewport */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: auto;
+    text-align: center;
+}
+
+/* Artículos dentro de la sección principal */
+article {
+    background-color: #e0e0e0;
+    width: 30vw; /* 50% del ancho del viewport */
+    padding: 1vh; /* 2% de la altura del viewport */
+    margin: 20vh auto; /* Margen vertical usando vh y centrado horizontal */
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+}
+
+article img {
+    max-width: 50%;
+    height: auto;
+    border-radius: 2px;
+    margin-bottom: 1vh;
+}
+
+article:hover {
+    background-color: #d6d6d6;
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+}
+
+/* Selectores anidados para énfasis */
+article > h2 {
+    font-size: 2vh;
+    color: #333;
+}
+
+article > p {
+    font-size: 1.8vh;
+    color: #666;
+}
+
+aside{
+    text-align: center;
+}
+
+/* Pie de página estilizado con vh y vw */
+footer {
+    background-color: #219636;
+    color: white;
+    text-align: center;
+    height: 5vh; /* 10% de la altura del viewport */
+    line-height: 5vh; /* Centrado vertical del texto */
+}
+
+footer a {
+    color: #17cf45;
+    text-decoration: none;
+    margin: 500 1vw;
+    
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: #1bb7e2;
+}
+
+/* Diseño responsivo para pantallas más pequeñas */
+@media (max-width: 768px) {
+    main {
+        padding: 10vw;
+    }
+
+    article {
+        width: 80vw; /* Ajuste al 80% del ancho del viewport */
+    }
+
+    article > h2 {
+        font-size: 2.5vh;
+    }
+
+    article > p {
+        font-size: 2vh;
+    }
+}

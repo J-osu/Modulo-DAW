@@ -1,0 +1,105 @@
+/* styles.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f0f0f0;
+    margin: 0;
+  }
+  
+  .Mano {
+    position: relative;
+    width: 95px;
+    height: 110px;
+    border-radius: 60px 60px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+  
+  .Palma {
+    position: absolute;
+    bottom: 0;
+    width: 90px;
+    height: 70px;
+    background: #f5a623;
+    border-radius: 60% 60% 40% 40%;
+    z-index: 1;
+    box-shadow: inset -4px -4px 0 #e59620;
+  }
+  
+  /* Dedos */
+  .finger {
+    position: absolute;
+    width: 18px;
+    height: 50px;
+    background: #23e0f5;
+    border-radius: 10px 10px 10px 10px;
+    transform-origin: bottom center;
+    transition: transform 0.5s, top 0.5s;
+    box-shadow: inset -2px -2px 0 #e59620;
+  }
+  
+  .finger1 {
+    top: 40px;
+    left: 8px;
+    transform: rotate(-100deg) translateX(-10px);
+  }
+  
+  .finger2 {
+    top: 45px;
+    left: 28px;
+    transform: rotate(-90deg) translateX(-10px);
+  }
+  
+  .finger3 {
+    top: 50px;
+    left: 48px;
+    transform: rotate(-80deg) translateX(-8px);
+  }
+  
+  .finger4 {
+    top: 55px;
+    left: 68px;
+    transform: rotate(-70deg) translateX(-8px);
+  }
+  
+  /* Pulgar */
+  .thumb {
+    position: absolute;
+    width: 16px;
+    height: 40px;
+    background: #23e0f5;
+    border-radius: 12px 12px 8px 8px;
+    bottom: 30px;
+    left: 85px;
+    transform: rotate(-10deg);
+    transform-origin: bottom center;
+    z-index: 2;
+    box-shadow: inset -2px -2px 0 #e59620;
+    transition: transform 0.5s, bottom 0.5s, left 0.5s;
+  }
+  
+  /* Abrir la mano */
+  .Mano:hover .finger {
+    top: 8px;
+    transform: rotate(0deg);
+  }
+  
+  .Mano:hover .thumb {
+    bottom: 15px;
+    left: 80px;
+    transform: rotate(0deg);
+  }
+
+  #particles-canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #674f81; /* Fondo oscuro */
+    z-index: -1; /* Detrás de la mano */
+  }
+  

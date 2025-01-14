@@ -1,0 +1,55 @@
+/* Estilos básicos */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+  
+  /* Contenedor de los ojos */
+  .ojos {
+    display: flex;
+    gap: 50px;
+  }
+  
+  /* Ojo 1 (circular) */
+  .ojo1 {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    border: 5px solid #000;
+    border-radius: 50%;  /* Esto asegura que el ojo sea circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+  }
+  
+  /* Ojo 2 (circular) */
+  .ojo2 {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    border: 5px solid #000;
+    border-radius: 50%;  /* Esto asegura que el ojo sea circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+  }
+  
+  /* Pupila */
+  .pupil {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #000;
+    border-radius: 50%;
+    transition: transform 0.1s linear;
+  }

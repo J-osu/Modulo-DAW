@@ -1,0 +1,17 @@
+p{
+    border: 2px red solid;
+    margin: 10px 5px;
+    padding: 30px 100px;
+}
+hr{
+    border: 4px solid orange;
+    border-bottom: 4px solid orange;
+    background-color: purple;
+    height: 12px;
+}
+#elemento_especial{
+    color: red;
+}
+.ultimo_elemento{
+    color: yellow;
+}
