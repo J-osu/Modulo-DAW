@@ -1,0 +1,17 @@
+bbody, html {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.parallax {
+    background-image: url('descarga.jpg');
+    height: 600px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.content {
+    height: 500px;
+    text-align: center;
+    padding: 50p
+}

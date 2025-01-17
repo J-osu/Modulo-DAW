@@ -1,22 +1,27 @@
-create database caso1;
-use  caso1;
-create table Proveedor(
-codigo integer primary key,
-direccion varchar,
-ciudad varchar,
-provincia varchar
+create database if not exists caso4;
+use  caso4;
+create table Agencia(
+id int primary key,
+nombre varchar(20),
+direccion varchar(40),
+telefono varchar(8)
 );
-create table Categoria(
-codigo integer primary key,
-nombre varchar
+create table Propietario(
+    id int primary key,
+    nombre varchar(20),
+    apellido varchar(20),
+    direccion varchar(40),
+    telefono varchar(8)
+    email varchar(30)
 );
-create table Pieza(
-codigo integer primary key,
-color varchar,
-precio integer,
-foreign key (codigo) references Categoria(codigo) on update cascade
-);
-create table Proveedor_Suministra(
-    foreign key (codigo) references Proveedor(codigo)on update cascade
-    foreign key (codigo) references Pieza(codigo)on update cascade
+create table Vivienda(
+    id int primary key,
+    calle varchar(20),
+    numero int,
+    codigo_postal int,
+    piso int,
+    poblacion int,
+    
+    id_propietario int,
+    foreign key (id_propietario) references Propietario(id)
 );
