@@ -1,134 +1,3 @@
-create database if not exists concesionario;
-use concesionario;
-create table Marca(
-    id int primary key auto_increment,
-    nombre varchar(20)
-);
-create table Modelo(
-    id int primary key auto_increment,
-    nombre varchar(20),
-    id_marca int,
-    foreign key (id_marca) references Marca(id) on update cascade
-);
-create table Version(
-    id int primary key auto_increment,
-    nombre varchar(20),
-    potencia varchar(20),
-    precio_base int,
-    tipo_combustible varchar(15),
-    id_modelo int,
-    foreign key (id_modelo) references Modelo(id) on update cascade
-);
-create table Extra(
-    id int primary key auto_increment,
-    nombre varchar(20),
-    descripcion varchar(20)
-);
-create table Tiene(
-    precio int,
-    id_version int,
-    id_extra int,
-    foreign key (id_version) references Version(id) on update cascade,
-    foreign key (id_extra) references Extra(id) on update cascade
-);
-create table Cliente(
-    id int primary key auto_increment,
-    nombre varchar(20),
-    apellido1 varchar(20),
-    apellido2 varchar(20),
-    telefono varchar(20),
-    direccion varchar(20)
-);
-create table Coche_usado(
-    id int primary key auto_increment,
-    matricula varchar(20),
-    nombre varchar(20),
-    precio_tasacion int,
-    fecha_entrega date,
-    id_modelo int,
-    id_cliente int,
-    foreign key (id_modelo) references Modelo(id) on update cascade,
-    foreign key (id_cliente) references Cliente(id) on update cascade
-);
-create table Vendedor(
-    id int primary key auto_increment,
-    nombre varchar(20),
-    apellido1 varchar(20),
-    apellido2 varchar(20),
-    telefono varchar(20),
-    direccion varchar(20)
-);
-create table Coche_nuevo(
-    id int primary key auto_increment,
-    matricula varchar(20),
-    nombre varchar(20),
-    id_version int,
-    foreign key (id_version) references Version(id) on update cascade
-);
-create table Compra(
-    id int primary key auto_increment,
-    fecha date,
-    id_vendedor int,
-    id_coche_nuevo int,
-    id_cliente int,
-    foreign key (id_cliente) references Cliente(id) on update cascade,
-    foreign key (id_vendedor) references Vendedor(id) on update cascade,
-    foreign key (id_coche_nuevo) references Coche_nuevo(id) on update cascade
-);
-create table Coche_nuevo_Tiene_Extra(
-    id_coche_nuevo int,
-    id_extra int,
-    foreign key (id_coche_nuevo) references Coche_nuevo(id) on update cascade,
-    foreign key (id_extra) references Extra(id) on update cascade
-);
-
---=============================Ejercicio 2==============================================
-
-create database if not exists empresa;
-use empresa;
-create table Curso(
-    id primary key auto_increment,
-    nombre varchar(20),
-    descripcion varchar(20),
-    duracion varchar(20),
-    coste int
-);
-create table Es_prerrequisito(
-    es_obligatosio char(2),
-    id_curso int,
-    id_curso_prerrequisito int,
-    foreign key (id_curso) references Curso(id) on update cascade,
-    foreign key (id_curso_prerrequisito) references Curso(id) on update cascade
-);
-create table Edicion(
-    id int primary key auto_increment,
-    fecha_inicio date,
-    fecha_fin date,
-    horario varchar(20),
-    lugar varchar(20),
-    id_curso int,
-    foreign key (id_curso) references Curso(id) on update cascade
-);
-create table Empleado(
-    id int primary key auto_increment,
-    nombre varchar(20),
-    apellido1 varchar(20),
-    apellido2 varchar(20),
-    telefono varchar(20),
-    direccion varchar(20),
-    tipo varchar(20)
-);
-create table Recibe(
-    id_empleado int,
-    id_edicion int,
-    foreign key (id_empleado) references Empleado(id) on update cascade,
-    foreign key (id_edicion) references Edicion(id) on update cascade
-);
-
-
-
---====================================================================
-
 create database if not exists parte1;
 use parte1;
 
@@ -203,7 +72,7 @@ create table Papel(
     foreign key (id_libro) references Libro(id) on update cascade
 );
 create table Digital(
-    tamaño float,
+    tamano float,
     precio float,
     id_libro int,
     foreign key (id_libro) references Libro(id) on update cascade
@@ -234,7 +103,7 @@ create table Localidad(
 );
 
 
---=============================================================================================
+--===================================PARTE2==================================================
 
 create database if not exists parte2;
 use parte2;
@@ -312,3 +181,91 @@ create table Tiene_video(
     foreign key (id_video) references Video(id) on update cascade,
     foreign key (id_play_list) references Play_list(id) on update cascade
 );
+
+
+--==============================EJERCICIOS======================================
+--Crea una copia de la tabla libro_ebook que se llame libro_pdf
+use parte1;
+create table libro_pdf like digital;
+
+--Renombra la tabla Editorial a Editoriales
+rename table Editorial to Editoriales;
+
+/*Modifica el campo cantidad de la tabla cestaContieneLibros (o como la hayas
+llamado) para que el valor por defecto sea 1 y se compruebe que NO puede ser
+negativo */
+
+alter table Contiene modify cantidad int default 1 not null;
+
+--Elimina en el orden correcto la tabla Libro
+
+alter table almacena
+	drop constraint almacena_ibfk_2;
+alter table contiene
+	drop constraint contiene_ibfk_2;
+alter table publica
+	drop constraint publica_ibfk_1;
+alter table escribe
+	drop constraint escribe_ibfk_2;
+alter table papel
+	drop constraint papel_ibfk_1;
+alter table digital
+	drop constraint digital_ibfk_1;
+drop table Libro;
+
+/*Elimina la restricción de clave externa de id_cliente de la tabla Cesta y añádela de
+nuevo con opción de actualizar en las tablas con FK*/
+alter table Cesta
+	drop constraint Cesta_ibfk_1;
+
+alter table Cesta
+	add constraint Cesta_ibfk_1 foreign key (id_cliente) references Cliente(id) on update cascade;
+
+/*Introduce un campo “descuento” en Cesta entre id y fecha_compra con un valor por
+defecto del 0,05*/
+alter table Cesta
+	add descuento float default 0.05 not null;
+alter table Cesta
+    ALTER TABLE parte1.cesta CHANGE descuento descuento float DEFAULT 0.05 NOT NULL AFTER id;
+
+/*Crea un índice en la tabla Cliente sobre los campos id y email*/
+create index indice_cliente on Cliente(id, email);
+
+/*Crea una vista de la tabla Almacén con: select telefono, direccion from Almacen.*/
+create view vista_almacen as select telefono, direccion from Almacen;
+
+/*Crea un campo “población” de tipo varchar(30) en la tabla Cliente entre los campos
+dirección y email*/
+alter table Cliente
+	add poblacion varchar(30) after direccion;
+
+/*Quita la clave primaria de Digital y después coloca una nueva donde todos sus
+atributos sean clave primaria*/
+alter table Digital
+	drop primary key;
+
+alter table Digital
+	add primary key (id_libro);
+
+/*Cambia el nombre del campo ano_publicación en Libro por fechaPublicacion*/
+alter table Libro
+    rename column ano_publicacion to fechaPublicacion;
+
+/*Coloca un campo “licencia” como char(3) en la tabla Ebook al principio.*/
+alter table libro_pdf
+	add licencia char(3) first;
+
+/*Cambia el nombre de atributo teléfono de las tablas por teléfono_fijo y añade
+restricciones de valor por defecto 950123456 y que no pueda ser nulo*/
+alter table Almacen
+    rename column telefono to telefono_fijo;
+alter table Almacen
+    modify telefono_fijo int default 950123456 not null;
+alter table cliente
+    rename column telefono to telefono_fijo;
+alter table cliente
+    modify telefono_fijo int default 950123456 not null;
+alter table editoriales
+    rename column telefono to telefono_fijo;
+alter table editoriales
+    modify telefono_fijo int default 950123456 not null;
