@@ -1,0 +1,86 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f9;
+}
+
+/* Menú principal */
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: #333;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    gap: 20px;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo img {
+    width: 50px;
+    height: auto;
+}
+
+.logo:hover {
+    transform: scale(1.2);
+    filter: brightness(1.5);
+}
+
+/* Lista de enlaces */
+.menu-items {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+}
+
+.menu-items li {
+    align-self: center;
+}
+
+/* Alternar alineación usando nth-child */
+.menu-items li:nth-child(odd) {
+    align-self: flex-start;
+}
+
+.menu-items li:nth-child(even) {
+    align-self: flex-end;
+}
+
+/* Estilos de los enlaces */
+.menu-items a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 15px;
+    background: transparent;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Hover en los enlaces */
+.menu-items a:hover {
+    background: #555;
+    transform: scale(1.1);
+}
+
+/* Estado activo */
+.menu-items a.active {
+    background: #ff9800;
+    font-weight: bold;
+}
