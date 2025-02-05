@@ -18573,3 +18573,18 @@ select conferencia,division,count(*) from equipos group by conferencia,division 
 /*4)¿Qué equipos anotaron más de 6000 puntos de local en total y la media
 durante la temporada 02/03 ordenados por nombre?*/
 select equipo_local as equipo, sum(puntos_local) as puntos, avg(puntos_local) as media from partidos where temporada='02/03' group by equipo_local having sum(puntos_local)>6000 order by equipo_local;
+
+--1- ¿Cuánto pesa el jugador más pesado de cada equipo?
+select max(peso) as peso, Nombre_equipo from jugadores group by Nombre_equipo;
+
+/*2- ¿Qué equipos anotaron más de 6000 puntos de local en total y la media durante la
+temporada 02/03 ordenados por nombre?*/
+select equipo_local as equipo, sum(puntos_local) as puntos, avg(puntos_local) as media from partidos where temporada='02/03' group by equipo_local having sum(puntos_local)>6000 order by equipo_local;
+
+--3- ¿De qué ciudad es el equipo con el jugador más bajo?
+select ciudad from jugadores order by altura desc limit 1;
+
+/*4- Utiliza la UNION para extraer el nombre de los equipos que anotaron más de 100
+puntos como local y ganaron sus partidos, junto con los equipos que tienen jugadores
+españoles.*/
+select equipo_local from partidos where puntos_local>100 union select equipo_local from partidos where puntos_local>puntos_visitante and equipo_local in (select Nombre from equipos where nacionalidad='España') union select equipo_visitante from partidos where puntos_visitante>100 union select equipo_visitante from partidos where puntos_visitante>puntos_local and equipo_visitante in (select Nombre from equipos where nacionalidad='España');
