@@ -1,0 +1,148 @@
+:root{
+    --bg-color:#1f1934;
+    --text-color:#fff;
+    --main-color: #fd9e23;
+    --second-color:#ff6347;
+    --coolor-ffondo1: #2c1a47;
+    --color-fondo2: #9b9bc8;
+
+    --big-font: 6.6rem;
+    --p-font: 1rem;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg, var(--coolor-ffondo1), var(--color-fondo2));
+    min-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+main {
+    padding-top: 10px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+    padding-top: 200px;
+    text-align: center;
+}
+.grid-container h2{
+    font-size: 2rem;
+    color: var(--main-color);
+    margin-bottom: 20px;
+    grid-column: span 3;
+}
+
+.bloque {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.cuadro {
+    width: 150px;
+    height: 150px;
+    background-color: #ddd;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #666;
+    overflow: hidden;
+    padding: 10px;
+}
+
+/*====================== Sección de habilidades ======================================*/
+.skills-table td i {
+    color: var(--main-color);
+    margin-right: 10px;
+    font-size: 1.2rem;
+    vertical-align: middle;
+    
+}
+.skills-section {
+    margin-top: 50px;
+    padding: 20px;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.skills-section h2 {
+    font-size: 2rem;
+    color: var(--main-color);
+    margin-bottom: 20px;
+}
+
+.skills-tables {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 200px;
+}
+
+.skills-table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 400px;
+    background-color: #30294e;
+    color: var(--text-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.skills-table th, .skills-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.skills-table th {
+    background-color: var(--main-color);
+    color: #fff;
+    text-align: center;
+}
+
+.skills-table tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.skills-table tbody tr:hover {
+    background-color: rgba(255, 140, 0, 0.2);
+}
+
+.skills-table td {
+    text-align: left;
+    
+}
+
+.soft-skills-table td {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
