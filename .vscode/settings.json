@@ -1,6 +1,0 @@
-{
-    "java.compile.nullAnalysis.mode": "automatic",
-    "java.project.sourcePaths": [
-        "PROG/JAVA/SpringBoot/pizzeria/src/main/java/com/josue/pizzeria"
-    ]
-}

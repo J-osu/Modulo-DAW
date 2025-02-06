@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #b8b8c1;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: #333;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo img {
+    width: 100px;
+    height: auto;
+}
+
+.logo:hover {
+    transform: scale(1.2);
+    filter: brightness(1.5);
+}
+
+.menu-items {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+}
+
+.menu-items li {
+    align-self: center;
+}
+
+.menu-items li:nth-child(odd) {
+    align-self: flex-start;
+}
+
+.menu-items li:nth-child(even) {
+    align-self: flex-end;
+}
+
+.menu-items a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 25px;
+    background: transparent;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.menu-items a:hover {
+    background: #555;
+    transform: scale(1.1);
+}
+
+.menu-items a.active {
+    background: #ff9800;
+    font-weight: bold;
+}
+
+h1{
+    text-align: center;
+    margin-top: 50px;
+    font-size: 50px;
+}
+
+p{
+    text-align: center;
+    margin-top: 70px;
+    font-size: 30px;
+}
