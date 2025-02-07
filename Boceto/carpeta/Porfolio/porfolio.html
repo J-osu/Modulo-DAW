@@ -10,9 +10,11 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 <!--========================================== css ===================================================-->
-        <link rel="stylesheet" href="style-header-footer.css">
-        <link rel="stylesheet" href="style-porfolio.css">
-        <link rel="stylesheet" href="style-buttons.css">
+        <link rel="stylesheet" href="./css/style-porfolio.css">
+        <link rel="stylesheet" href="./css/style-buttons.css">
+<!--========================================== script ===================================================-->
+<!--=====================================================================================================-->
+    <script src="./js/HeaderyFooter-script.js"></script>
 <!--======================================== iconos ==================================================-->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <!--======================================== Titulo ==================================================-->
@@ -21,22 +23,7 @@
     </head>
     <body>
 <!--=============================================== header =================================================-->
-        <header>
-            <a href="Inicio.html" class="logo">
-                <img src="../Imagenes/coravacio.webp" alt="logo">
-            </a>
-            <nav>
-                <ul class="navlist">
-                    <li><a href="Inicio.html">Home</a></li>
-                    <li><a href="mantenimiento.html">Experienca laboral</a></li>
-                    <li><a href="#" class="active">Porfolio</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
-                </ul>
-            </nav>
-            <button class="menu-button">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </header>
+        <div id="header"></div>
 <!--================================== Estructura interna =================================================-->
         <main>
             <section>
@@ -134,34 +121,9 @@
                 </div>
         </main>
 <!--======================================== footer =====================================-->
-        <footer class="pie-pagina">
-            <div class="grupo1">
-                <div class="caja">
-                    <figure>
-                        <a href="Inicio.html">
-                            <img src="../Imagenes/coravacio.webp" alt="logo">
-                        </a>
-                    </figure>
-                </div>
-                <div class="caja">
-                    <h2>SOBRE DESARROLLO WEB</h2>
-                    <p>Soy lo que buscas</p>
-                </div>
-                <div class="caja">
-                    <h2>SIGUEME</h2>
-                    <div class="redes-sociales">
-                        <a href="#" class="fa-brands fa-instagram"></a>
-                        <a href="#" class="fa-brands fa-github"></a>
-                        <a href="#" class="fa-brands fa-linkedin"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="grupo2">
-                <small>&copy; 2024 <b>Josu-dev</b> - Todos los Derechos Reservados.</small>
-            </div>
-        </footer>
+        <div id="footer"></div>
 <!--======================================== script =====================================-->
-        <script src="animacion.js"></script>
-        <script src="script-porfolio.js"></script>
+        <script src="./js/animacion.js"></script>
+        <script src="./js/script-porfolio.js"></script>
     </body>
 </html>
