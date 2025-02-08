@@ -951,3 +951,5 @@ entrega de los pedidos que no han sido entregados a tiempo.*/
 subtotal, el IVA y el total facturado. (cuidado con cómo usas los cálculos)*/
 /*30)La misma información que en la pregunta anterior, pero agrupada por
 código de producto filtrada por los códigos que empiecen por FR. */
+
+--1) Borra los clientes que no tengan pedidos.

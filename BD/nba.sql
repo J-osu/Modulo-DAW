@@ -18588,3 +18588,17 @@ select ciudad from jugadores order by altura desc limit 1;
 puntos como local y ganaron sus partidos, junto con los equipos que tienen jugadores
 españoles.*/
 select equipo_local from partidos where puntos_local>100 union select equipo_local from partidos where puntos_local>puntos_visitante and equipo_local in (select Nombre from equipos where nacionalidad='España') union select equipo_visitante from partidos where puntos_visitante>100 union select equipo_visitante from partidos where puntos_visitante>puntos_local and equipo_visitante in (select Nombre from equipos where nacionalidad='España');
+
+
+--5) Borra las estadísticas de los jugadores sin procedencia
+delete from estadisticas where jugador in (select nombre from jugadores where procedencia is null);
+
+--6) Borra los jugadores españoles
+delete from jugadores where nacionalidad='España';
+
+/*7) Borra los equipos de las ciudades que tienen una ‘o’ en la segunda
+posición. */
+delete from equipos where ciudad like '%o%';
+
+--8) Borra todo lo relacionado con el equipo 76ers en la base de datos
+delete from estadisticas where jugador in (select nombre from jugadores where Nombre_equipo='76ers');
