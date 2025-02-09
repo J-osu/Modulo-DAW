@@ -56,6 +56,8 @@ function ResizeWindows(){
     canvas.style.height = canvasHeight+"px";
 };
 
+Concurrent.Thread.create(initTimer);
+
 window.addEventListener("load", function(e){
     //Cuando se termine de cargar todo redimenciona y pone en marcha el motor gráfico.
     ResizeWindows();
