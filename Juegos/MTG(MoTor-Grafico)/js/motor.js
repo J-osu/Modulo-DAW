@@ -26,6 +26,15 @@ var loop = {
         //Cuenta los fps.
         loop.fps++;
         borrarCnavas();
+
+        //Comienza un nuevo path de impresion.
+        ctx.beginPath();
+        ctx.font = "12px verdana";
+        ctx.fillStyle = "yellow";
+        //Imprime la hora y fecha y lo situa en las cordenadas
+        ctx.fillText(Timer.now, 15, 20);
+        //Cerramos el Path
+        ctx.stroke();
     }
 };
 
@@ -56,7 +65,7 @@ function ResizeWindows(){
     canvas.style.height = canvasHeight+"px";
 };
 
-Concurrent.Thread.create(initTimer);
+Concurrent.Thread.create(initTimer);    
 
 window.addEventListener("load", function(e){
     //Cuando se termine de cargar todo redimenciona y pone en marcha el motor gráfico.
