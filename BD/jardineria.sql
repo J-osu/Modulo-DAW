@@ -1,6 +1,6 @@
 
 DROP DATABASE IF EXISTS jardineria;
-create database if not exists jardineria;
+--create database if not exists jardineria;
 use jardineria;
 
 CREATE TABLE Oficinas (
@@ -904,52 +904,79 @@ INSERT INTO Pagos VALUES (38,'PayPal','ak-std-000026','2006-05-26',1171);
 
 --==============================================================
 
- --5)El código de oficina y la ciudad donde hay oficinas en EEUU.
- SELECT CodigoOficina, Ciudad FROM Oficinas WHERE Pais = 'USA';
-
- --6)Cuántos empleados hay en la compañía.
- SELECT COUNT(*) FROM Empleados;
- 
---7)Cuántos clientes tiene cada país.
-SELECT Pais, COUNT(*) FROM Clientes GROUP BY Pais;
-
-/*8)Cuál fue el pago medio en 2008 (pista: Usar la función YEAR de MySQL o
-la función to-char(fecha,'yyyy') de Oracle o LIKE).*/
-SELECT AVG(Cantidad) FROM Pagos WHERE YEAR(FechaPago) = 2008;
-
-/*9)Cuántos pedidos están en cada estado y ordena esta cuenta de manera
-descendente.*/
-SELECT Estado, COUNT(*) FROM Pedidos GROUP BY Estado ORDER BY COUNT(*) DESC;
-
---10)El precio del producto más caro y del más barato.
-SELECT MAX(PrecioVenta) AS PrecioMasCaro, MIN(PrecioVenta) AS PrecioMasBarato FROM Productos;
-
---11)Obtén el nombre del cliente con mayor límite de crédito.
-/*12)Obtén el nombre, apellido1 y cargo de los empleados que no
-representen a ningún cliente.*/
-/*13)El nombre, los apellidos y el email de los empleados cuyo jefe es el
-empleado Alberto Soria.*/
---14)El cargo, nombre, apellidos y email del jefe de la empresa.
-/*15)El nombre, apellidos y cargo de aquellos que no tienen puesto de
-representantes de ventas.*/
---16)El número de clientes que tiene la empresa.
---17)El nombre de los clientes españoles.
---18)¿Cuántos pedidos entregados ha realizado cada cliente?
---19)¿Cuántos clientes tiene la ciudad de Madrid?
---20)¿Cuántos clientes tienen las ciudades que empiezan por M?
-/*21)El código de empleado y el número de clientes al que atiende cada
+--1) Inserta una oficina con sede en Fuenlabrada.
+INSERT INTO Oficinas (CodigoOficina, Ciudad, Pais, CodigoPostal, Telefono, LineaDireccion1, LineaDireccion2) VALUES ('F-D', 'Fuenlabrada', 'España', '28923', '913333333', 'Calle Fuenlabrada', 'Calle Fuenlabrada 2');
+/*2) Inserta un empleado para la oficina de Fuenlabrada que sea
 representante de ventas.*/
---22)El número de clientes que no tiene asignado representante de ventas.
---23)¿Cuál fue la primera y última fecha en la que se hizo un pago?
---24)El código de cliente de aquellos que hicieron pagos en 2008.
---25)Los distintos estados por los que puede pasar un pedido.
-/*26)El número de pedido, código de cliente, fecha requerida y fecha de
-entrega de los pedidos que no han sido entregados a tiempo.*/
---27)¿Cuántos productos existen en cada gama?
---28)Saca los 20 productos más solicitados por cantidad
-/*29)La facturación que ha tenido la empresa en toda la historia, indicando el
-subtotal, el IVA y el total facturado. (cuidado con cómo usas los cálculos)*/
-/*30)La misma información que en la pregunta anterior, pero agrupada por
-código de producto filtrada por los códigos que empiecen por FR. */
+INSERT INTO Empleados (CodigoEmpleado, Nombre, Apellido1, Apellido2, Extension, Email, CodigoOficina, CodigoJefe, Puesto) 
+VALUES (51, 'Juan', 'Pérez', 'Gómez', '1234', 'XXXXXXXXXXXXXXXXXXXXXXXX', 'F-D', 
+NULL, 'Representante de ventas');
+--3) Inserta un cliente del representante de ventas insertado en el punto 2.
+INSERT INTO Clientes (CodigoCliente, NombreCliente, NombreContacto, ApellidoContacto, Telefono, Fax, LineaDireccion1, LineaDireccion2, Ciudad, Region, Pais, CodigoPostal, CodigoEmpleadoRepVentas, LimiteCredito)
+VALUES (51, 'Cliente de ejemplo', 'Cliente', 'Ejemplo', '913333333', '913333333', 'Calle Fuenlabrada', 'Calle Fuenlabrada 2', 'Fuenlabrada', 'España', 'España', '28923', 51, 10000);
+--4) Inserta un nuevo pedido 129 y su correspondiente detallePedido.
+INSERT INTO Pedidos (CodigoPedido, CodigoCliente, FechaPedido, FechaEsperada, FechaEntrega, Estado, Comentarios)
+VALUES (129, 51, '2023-04-01', '2023-04-02', NULL, 'Pendiente', 'Pedido de ejemplo');
+--5) Crea la tabla pedidos2 e inserta ahí los pedidos no entregados.
+--create table Pedidos2 as select * from Pedidos where FehcaEntrega is null;
 
---1) Borra los clientes que no tengan pedidos.
+--1) Cambia la región de Madrid a MAD en Clientes.
+SELECT * FROM Clientes WHERE Region = 'Madrid';
+UPDATE Clientes SET Region = 'MAD' WHERE Region = 'Madrid';
+--2) Coloca en región lo mismo que en Ciudad en los registros no indicados.
+select * from clientes where region = '' or region is null;
+UPDATE Clientes SET Region = Ciudad WHERE Region = '';
+/*3) Incrementa el precio de venta en un 20% el precio de los productos que
+no tengan pedidos.*/
+UPDATE Productos SET PrecioVenta = PrecioVenta * 1.2 WHERE CodigoProducto NOT IN (SELECT DISTINCT CodigoProducto FROM DetallePedidos);
+/*4) Modifica la tabla DetallePedido para incorporar un campo numérico
+llamado TotalLinea, y actualiza todos sus registros para calcular su valor
+con la fórmula TotalLinea=PrecioUnidad*Cantidad*IVA/100*/
+--ALTER TABLE DetallePedidos ADD COLUMN TotalLinea NUMERIC(15, 2);
+UPDATE DetallePedidos SET TotalLinea = PrecioUnidad * Cantidad * 21 / 100;
+/*5) Establece a 0 el límite de crédito del cliente que menos unidades pedidas
+tenga del producto 'OR-179'. */
+-- UPDATE Clientes SET LimiteCredito = 0 WHERE CodigoCliente = (SELECT CodigoCliente FROM Pedidos JOIN DetallePedidos ON Pedidos.CodigoPedido = DetallePedidos.CodigoPedido WHERE CodigoProducto = 'OR-179' GROUP BY CodigoCliente ORDER BY SUM(Cantidad) ASC LIMIT 1);
+
+-- 1) Borra los clientes que no tengan pedidos.
+DELETE FROM Clientes WHERE CodigoCliente NOT IN (SELECT DISTINCT CodigoCliente FROM Pedidos);
+-- 2) Borra los pagos del cliente con menor límite de crédito.
+-- DELETE FROM Pagos WHERE CodigoCliente = (SELECT CodigoCliente FROM Clientes ORDER BY LimiteCredito ASC LIMIT 1);
+-- 3) Borra los pagos por cheque.
+DELETE FROM Pagos WHERE FormaPago = 'Cheque';
+-- 4) Borra los pedidos y su detalle del cliente “Tendo Garden”.
+DELETE FROM DetallePedidos WHERE CodigoPedido IN (SELECT CodigoPedido FROM Pedidos WHERE CodigoCliente = (SELECT CodigoCliente FROM Clientes WHERE NombreCliente = 'Tendo Garden'));
+DELETE FROM Pedidos WHERE CodigoCliente = (SELECT CodigoCliente FROM Clientes WHERE NombreCliente = 'Tendo Garden');
+
+--===========================================================================================================
+
+-- --¿Qué proveedores diferentes hay para adquirir los productos?
+-- SELECT DISTINCT Proveedor FROM productos;
+
+-- --Extrae la siguiente información de clientes de Madrid y que tienen indicada la línea de dirección 2.
+-- SELECT CodigoCliente, NombreCliente, ApellidoContacto, Telefono, Fax, LineaDireccion1, LineaDireccion2, Ciudad, Region, Pais, CodigoPostal FROM Clientes WHERE Ciudad = 'Madrid' AND LineaDireccion2 IS NOT NULL;
+
+-- --¿Cuál el el producto más caro que se vende en la tienda?
+-- SELECT * FROM productos ORDER BY PrecioVenta DESC LIMIT 1;
+
+-- --¿Qué empleados trabajan en una oficina de la ciudad de Madrid?
+-- select nombre from empleados where codigooficina = 'MAD-ES';
+
+-- --• ¿Cuánto es el total pagado según la forma de pago durante el año 2009? Ordena el resultado por el total descendente.
+-- select formaPago, sum(cantidad) as total from pagos where fechaPago between '2009-01-01' and '2009-12-31' group by formaPago order by total desc;
+
+-- /*Obtén el (nombre y apellidos) y el puesto que ocupa los empleados que tienen por
+-- jefe un subdirector de ventas y ordena el resultado alfabético por el puesto
+-- descendente.*/
+-- select nombre, apellido1, apellido2, puesto from empleados where codigojefe in (select codigoempleado from empleados where puesto = 'Subdirector Ventas') order by puesto desc;
+
+-- /*• Calcula el coste de cada pedido indicando el Código pedido, subtotal, IVA y total.
+-- Después, con UNION, añade la suma total de todos los pedidos al final.*/
+-- select codigoPedido, sum(precioUnidad * cantidad) as subtotal, sum(precioUnidad * cantidad * 21 / 100) as IVA, sum(precioUnidad * cantidad * 1.21) as total from detallePedidos group by codigoPedido union select null, null, null, sum(precioUnidad * cantidad * 1.21) from detallePedidos;
+
+-- /*Extrae la información siguiente del cliente junto con el nombre del representante de
+-- ventas y el total de pedidos que ha realizado cada cliente. Cuando calcules el total
+-- de pedidos sólo se escogerán aquellos que han sido entregados y que el total sea
+-- mayor que 3. Ordena el resultado por la cantidad descendente y en caso de
+-- empate por el Nombre de cliente.*/
+-- select c.codigoCliente, c.nombreCliente, c.nombreContacto, c.apellidoContacto, e.nombre as nombreRepresentante, e.apellido1 as apellido1Representante, e.apellido2 as apellido2Representante, count(p.codigoPedido) as totalPedidos from clientes c join empleados e on c.codigoEmpleadoRepVentas = e.codigoEmpleado join pedidos p on c.codigoCliente = p.codigoCliente where p.estado = 'Entregado' group by c.codigoCliente, c.nombreCliente, c.nombreContacto, c.apellidoContacto, e.nombre, e.apellido1, e.apellido2 having count(p.codigoPedido) > 3 order by totalPedidos desc, c.nombreCliente asc;

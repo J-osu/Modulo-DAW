@@ -18559,46 +18559,63 @@ INSERT INTO partidos VALUES (15660,'Suns','Mavericks',69,144,'07/08');
 
 --=======================================================================
 
---1)¿Cuántas temporadas diferentes hay en la tabla estadísticas?
-select count(distinct temporada) from estadisticas;
-
-/*2)¿Qué jugadores tuvieron más de 20 puntos por partido durante la
-temporada 00/01?*/
-select jugador from estadisticas where puntos_por_partido>20 and temporada='00/01';
-
-/*3)¿Cuántos equipos compiten según la conferencia y división y ordenando
-por división descente?*/
-select conferencia,division,count(*) from equipos group by conferencia,division order by division desc;
-
-/*4)¿Qué equipos anotaron más de 6000 puntos de local en total y la media
-durante la temporada 02/03 ordenados por nombre?*/
-select equipo_local as equipo, sum(puntos_local) as puntos, avg(puntos_local) as media from partidos where temporada='02/03' group by equipo_local having sum(puntos_local)>6000 order by equipo_local;
-
---1- ¿Cuánto pesa el jugador más pesado de cada equipo?
-select max(peso) as peso, Nombre_equipo from jugadores group by Nombre_equipo;
-
-/*2- ¿Qué equipos anotaron más de 6000 puntos de local en total y la media durante la
-temporada 02/03 ordenados por nombre?*/
-select equipo_local as equipo, sum(puntos_local) as puntos, avg(puntos_local) as media from partidos where temporada='02/03' group by equipo_local having sum(puntos_local)>6000 order by equipo_local;
-
---3- ¿De qué ciudad es el equipo con el jugador más bajo?
-select ciudad from jugadores order by altura desc limit 1;
-
-/*4- Utiliza la UNION para extraer el nombre de los equipos que anotaron más de 100
-puntos como local y ganaron sus partidos, junto con los equipos que tienen jugadores
-españoles.*/
-select equipo_local from partidos where puntos_local>100 union select equipo_local from partidos where puntos_local>puntos_visitante and equipo_local in (select Nombre from equipos where nacionalidad='España') union select equipo_visitante from partidos where puntos_visitante>100 union select equipo_visitante from partidos where puntos_visitante>puntos_local and equipo_visitante in (select Nombre from equipos where nacionalidad='España');
-
-
---5) Borra las estadísticas de los jugadores sin procedencia
-delete from estadisticas where jugador in (select nombre from jugadores where procedencia is null);
-
---6) Borra los jugadores españoles
-delete from jugadores where nacionalidad='España';
-
+-- 5) Borra las estadísticas de los jugadores sin procedencia.
+SELECT * FROM estadisticas LEFT JOIN jugadores ON estadisticas.jugador = jugadores.codigo 
+WHERE jugadores.procedencia IS NULL;
+DELETE FROM estadisticas WHERE jugador in (select codigo from jugadores where procedencia is null);
+-- 6) Borra los jugadores españoles.
+DELETE FROM jugadores WHERE procedencia = 'España';
 /*7) Borra los equipos de las ciudades que tienen una ‘o’ en la segunda
-posición. */
-delete from equipos where ciudad like '%o%';
+posición.*/
+DELETE FROM equipos WHERE ciudad = '%o%';
+-- 8) Borra todo lo relacionado con el equipo 76ers en la base de datos.
+DELETE FROM partidos WHERE equipo_local = '76ers' OR equipo_visitante = '76ers';
+DELETE FROM estadisticas WHERE jugador IN (SELECT codigo FROM jugadores WHERE nombre_equipo = '76ers');
+DELETE FROM jugadores WHERE nombre_equipo = '76ers';
+DELETE FROM equipos WHERE nombre = '76ers';
 
---8) Borra todo lo relacionado con el equipo 76ers en la base de datos
-delete from estadisticas where jugador in (select nombre from jugadores where Nombre_equipo='76ers');
+--=====================================================================================
+
+--¿Qué jugadores no tienen indicada su procedencia en la base de datos?
+SELECT * FROM jugadores WHERE procedencia IS NULL;
+
+--Obtén el nombre de los jugadores que tienen en su nombre una v en la posición 3.
+SELECT nombre FROM jugadores WHERE nombre LIKE '%_3%' limit 12;
+
+--¿Cuántos puntos por partido anotó Chris Wilcox durante las temporadas 2003 a 2006?
+select puntos_por_partido, temporada from estadisticas where jugador = (select codigo from jugadores where nombre = 'Chris Wilcox') limit 3;
+
+--¿Qué equipos tienen sólo 1 jugador en la posición ‘C’?
+SELECT nombre_equipo FROM jugadores WHERE posicion = 'C' GROUP BY nombre_equipo HAVING COUNT(*) = 1;
+
+--¿En qué temporada consiguió Kobe Bryant su mejor puntuación por partido?
+SELECT * FROM estadisticas
+JOIN jugadores ON estadisticas.jugador = jugadores.codigo
+WHERE nombre = 'Kobe Bryant'
+ORDER BY puntos_por_partido DESC
+LIMIT 1;
+
+--• Extrae la información de los jugadores que han tenido más rebotes que todos los jugadores españoles y ordena el resultado por el nombre del jugador ascendente.
+SELECT * FROM jugadores
+JOIN estadisticas ON jugadores.codigo = estadisticas.jugador
+WHERE rebotes_por_partido > ALL (SELECT rebotes_por_partido FROM jugadores WHERE procedencia = 'España')
+ORDER BY nombre asc limit 34;
+
+/*Empleando UNION, obtén el total de partidos ganados (local y visitante) por cada
+equipo en cada temporada. Ordena el resultado por nombre ascendente y
+temporada descendente*/
+SELECT equipo_local AS equipo, temporada, SUM(puntos_local) AS total_ganados
+FROM partidos
+GROUP BY equipo_local, temporada
+UNION ALL
+SELECT equipo_visitante AS equipo, temporada, SUM(puntos_visitante) AS total_ganados
+FROM partidos
+GROUP BY equipo_visitante, temporada
+ORDER BY equipo ASC, temporada DESC;
+
+/*Extrae la siguiente información del jugador/es que tiene el récord de asistencias .
+Ordena este resultado por la posición ascendente y en caso de empate por nombre
+de equipo descendente.*/
+select nombre, altura, posicion, nombre_equipo, asistencias_por_partido from jugadores join estadisticas on estadisticas.jugador = jugadores.codigo where codigo in (select jugador from estadisticas where asistencias_por_partido = 34);
+
+
