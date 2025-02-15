@@ -1,5 +1,7 @@
 package com.josue.pizzeria.controllers;
 
-public class ProductosControler {
+import org.springframework.stereotype.Controller;
 
+@Controller
+public class ProductosControler {
 }
