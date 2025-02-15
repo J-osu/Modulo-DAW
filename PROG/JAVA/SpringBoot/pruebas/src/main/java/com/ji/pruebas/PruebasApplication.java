@@ -1,13 +1,13 @@
-package com.ji.porfolio;
+package com.ji.pruebas;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PorfolioApplication {
+public class PruebasApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PorfolioApplication.class, args);
+		SpringApplication.run(PruebasApplication.class, args);
 	}
 
 }

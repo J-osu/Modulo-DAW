@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ji</groupId>
-	<artifactId>porfolio</artifactId>
+	<artifactId>pruebas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>porfolio</name>
+	<name>pruebas</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -54,12 +54,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-		<!--Dependencias de la vista-->
-			<groupId>nz.net.ultraq.thymeleaf</groupId>
-			<artifactId>thymeleaf-layout-dialect</artifactId>
-			<version>3.4.0</version>
 		</dependency>
 	</dependencies>
 
