@@ -1,4 +1,4 @@
-package com.ji.porfolio.models;
+package com.ji.porfolio;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

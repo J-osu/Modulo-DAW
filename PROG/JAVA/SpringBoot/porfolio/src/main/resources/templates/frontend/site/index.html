@@ -1,15 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
     layout:decorate="~{frontend/layout/Main}">
-
-    <head>
-        <th:block layout:fragment="MainHead"></th:block>
-        <!--========================================== css====================================-->
-        <link rel="stylesheet" th:href="@{/css/style-inicio}">
-        <!--=============================== script ================================-->
-        <script src=""></script>
-        <!--======================================== Titulo ===========================-->
-        <title>Josu-dev_Porfolio</title>
-        <link rel="icon" type="image/png" th:href="@{/img/corazon-icon}">
+    <head layout:fragment="extra-head">
+        <link rel="stylesheet" href="./css/style-inicio.css">
     </head>
     <body>
     <section layout:fragment="contenedor-principal">
