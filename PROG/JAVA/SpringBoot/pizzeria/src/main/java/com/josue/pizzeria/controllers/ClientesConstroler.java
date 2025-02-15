@@ -1,4 +1,4 @@
-package com.josue.pizzeria.controlers;
+package com.josue.pizzeria.controllers;
 
 public class ClientesConstroler {
 
