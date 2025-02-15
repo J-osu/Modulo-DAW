@@ -42,20 +42,21 @@ public class Main {
                 añadirHoras();
                 break;
             case 5:
-                listartodoslosEmpleados();
+                // listartodoslosEmpleados();
                 break;
             case 6:
                 listarEmpleados();
                 break;
             case 7:
-                listarDirectores();
+                // listarDirectores();
                 break;
             case 8:
-                listarContables();
+                // listarContables();
                 break;
             case 9:
-                cargarEmpleados();
-                imprimirTodoslosEmpleados();
+                // cargarEmpleados();
+                // imprimirTodoslosEmpleados();
+                break;
             case 10:
                 System.exit(0);
                 break;
