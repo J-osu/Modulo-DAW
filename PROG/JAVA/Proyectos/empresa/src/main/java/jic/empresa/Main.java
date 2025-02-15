@@ -3,15 +3,16 @@ package jic.empresa;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.FileReader;
+// import com.google.gson.Gson;
+// import com.google.gson.GsonBuilder;
+// import java.io.FileWriter;
+// import java.io.IOException;
+// import java.io.FileReader;
+
 public class Main {
     private static ArrayList<Empleado> LEmpleados = new ArrayList<Empleado>();
-    private ArrayList<Director> LDirectores = new ArrayList<Director>();
-    private ArrayList<Contable> LContables = new ArrayList<Contable>();
+    // private ArrayList<Director> LDirectores = new ArrayList<Director>();
+    // private ArrayList<Contable> LContables = new ArrayList<Contable>();
     private static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
         while (true) {
