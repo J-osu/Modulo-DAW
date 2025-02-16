@@ -276,3 +276,116 @@ body{
 .mano-izquierda .botoP {
     transform: scaleX(-1);
 }
+
+
+@media screen and (max-width: 1024px) {
+    .cara-con-manos {
+        gap: 150px;
+    }
+
+    .ojo1, .ojo2 {
+        width: 80px;
+        height: 80px;
+    }
+
+    .pupila {
+        width: 30px;
+        height: 30px;
+    }
+
+    .boca {
+        width: 200px;
+        height: 80px;
+    }
+
+    .Mano {
+        width: 100px;
+        height: 130px;
+    }
+
+    .Palma {
+        width: 80px;
+        height: 65px;
+        font-size: 12px;
+    }
+
+    .dedos {
+        height: 50px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cara-con-manos {
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+    }
+
+    .ojo1, .ojo2 {
+        width: 60px;
+        height: 60px;
+    }
+
+    .pupila {
+        width: 20px;
+        height: 20px;
+    }
+
+    .boca {
+        width: 150px;
+        height: 60px;
+    }
+
+    .Mano {
+        width: 90px;
+        height: 120px;
+    }
+
+    .Palma {
+        width: 70px;
+        height: 55px;
+        font-size: 10px;
+    }
+
+    .dedos {
+        height: 40px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .cara-con-manos {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .ojo1, .ojo2 {
+        width: 50px;
+        height: 50px;
+    }
+
+    .pupila {
+        width: 15px;
+        height: 15px;
+    }
+
+    .boca {
+        width: 120px;
+        height: 50px;
+    }
+
+    .Mano {
+        width: 80px;
+        height: 110px;
+    }
+
+    .Palma {
+        width: 60px;
+        height: 50px;
+        font-size: 9px;
+    }
+
+    .dedos {
+        height: 35px;
+    }
+}
