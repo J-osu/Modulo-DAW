@@ -1,0 +1,116 @@
+:root{
+    --color-1: #333;
+    --color-2: #fff;
+    --color-boton1: #5c6bc0;
+    --color-boton2: #d32f2f;
+    --tamaño-texto: 16px;
+}
+
+body {
+    background-color: var(--color-1);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    width: 400px;
+    margin: 50px auto;
+    border-radius: 10px;
+    background-color: var(--color-2);
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: var(--color-1);
+}
+
+.input-grupo {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.input-grupo input {
+    flex: 1;
+    padding: 10px;
+    font-size: var(--tamaño-texto);
+    border: 2px solid #ddd;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+.input-grupo button {
+    padding: 10px 20px;
+    font-size: var(--tamaño-texto);
+    background-color: var(--color-boton1);
+    color: var(--color-2);
+    border: none;
+    cursor: pointer;
+    border-radius: 0 10px 10px 0;
+    transition: background-color 0.5s ease;
+}
+
+.input-grupo button:hover {
+    background-color: #3f51b5;
+}
+
+#lista-compra {
+    list-style: none;
+    padding: 0;
+}
+
+#lista-compra li {
+    background-color: #e8eaf6;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    position: relative;
+    font-size: 18px;
+    color: var(--color-1);
+    display: flex;
+    align-items: center;
+}
+
+#lista-compra li input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+#lista-compra li .edit-button,
+#lista-compra li .delete-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: var(--tamaño-texto);
+}
+
+#lista-compra li .edit-button {
+    color: #f9a825;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+#lista-compra li .delete-button {
+    color: #e53935;
+}
+
+
+#borrar-todo {
+    width: 30%;
+    padding: 10px;
+    margin-left: 30%;
+    margin-top: 40px;
+    background-color: var(--color-boton2);
+    color: var(--color-2);
+    border: none;
+    cursor: pointer;
+    font-size: var(--tamaño-texto);
+    border-radius: 50px;
+    transition: background-color 0.3s;
+}
+
+#borrar-todo:hover {
+    background-color: #b71c1c;
+}
