@@ -79,6 +79,7 @@ function editItem(li, span) {
         }
     });
     input.addEventListener('blur', function () {
+        // se deja de edditar cuando se hace click fuera del campo.
         if (input.value.trim() !== '') {
             span.textContent = input.value;
         }
