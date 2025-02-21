@@ -1,0 +1,62 @@
+/*=================== Footer ======================*/
+footer{
+    width: 100%;
+    margin-top: auto; 
+}
+.pie-pagina{
+  width: 100%;
+  background-color: var(--color-numero1);
+  margin-top: 50px;
+}
+.pie-pagina .grupo1{
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 50px;
+  padding: 15px 0;
+  padding-top: 50px;
+}
+.pie-pagina .grupo1 .caja figure{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pie-pagina .grupo1 .caja figure img{
+  width: 150px;
+}
+.pie-pagina .grupo1 .caja h2{
+  color: var(--color-numero4);
+  margin-bottom: 25px;
+  font-size: 20px;
+}
+.pie-pagina .grupo1 .caja p{
+    color: var(--color-numero2);
+    margin-bottom: 10px;
+}
+.pie-pagina .grupo1 .redes-sociales a{
+    display: inline-block;
+    text-decoration: none;
+    color: var(--color-numero4);
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    margin-right: 10px;
+    font-size: 25px;
+    transition: all 300ms ease;
+}
+.pie-pagina .grupo1 .redes-sociales a:hover{
+    color: var(--color-numero3);
+}
+.pie-pagina .grupo2{
+    padding: 5px 10px;
+    text-align: center;
+    color: var(--color-numero2);
+    background-color: var(--color-numero5);
+}
+.pie-pagina .grupo2 small{
+    font-size: 15px;
+}

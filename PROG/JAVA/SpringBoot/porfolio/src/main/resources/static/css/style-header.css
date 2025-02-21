@@ -1,0 +1,90 @@
+:root{
+    --color-numero1: #2d1b4f;
+    --color-numero2: #e8e4e4;
+    --color-numero3: #9147ff;
+    --color-numero4: #ec8f16;
+    --color-numero5: #3c215e;
+    --big-font: 6.6rem;
+    --p-font: 1rem;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+body.fade-out {
+    opacity: 0;
+    transition: opacity 0.10s ease-in-out;
+}
+
+body.fade-in {
+    opacity: 1;
+    transition: opacity 0.10s ease-in-out;
+}
+
+main {
+    flex: 1;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    padding: 15px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .50s ease;
+    background-color: var(--color-numero1);
+}
+
+.logo img {
+    max-height: 90px;
+    margin-right: 75px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    margin-left: 40px;
+    font-size: 20px;
+}
+.navlist{
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navlist a {
+    text-decoration: none;
+    color: var(--color-numero4);
+    font-weight: var(--p-font);
+    margin: 0 20px;
+    padding: 10px 15px;
+}
+.navlist a:hover{
+    color: var(--color-numero3);
+}
+.navlist a.active {
+    color: var(--color-numero3);
+    font-weight: bold;
+    border-bottom: 2px solid var(--color-numero4);
+}
+.menu-button {
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    margin-left: 25px;
+    display: none;
+}
+.menu-button i {
+  color: var(--text-color2);
+}
+.menu-button i:hover{
+  color: var(--main-color3);
+}

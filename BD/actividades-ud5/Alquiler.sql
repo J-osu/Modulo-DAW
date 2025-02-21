@@ -4,7 +4,7 @@ use Alquiler;
 
 create table Agencia (
     id int primary key,
-    nombre varchar(20) not null,
+    nombre varchar(20),
     direccion varchar(20),
     telefono varchar(15)
 );
@@ -16,7 +16,7 @@ insert into agencia values (4, 'Agencia 4', 'Calle 4', '321654987');
 
 create table Propietario(
     id int primary key,
-    nombre varchar(20) not null,
+    nombre varchar(20),
     apellido1 varchar(20),
     apellido2 varchar(20),
     direccion varchar(20),
@@ -42,13 +42,13 @@ create table Vivienda(
 );
 
 insert into Vivienda values (1, 'Vivienda 1', 1, 12345, 'Poblacion 1', 'Piso 1', 1, 1);
-insert into Vivienda values (2, 'Vivienda 2', 2, 54321, 'Poblacion 2', 'Piso 2', 2, 2);
+insert into Vivienda values (2, 'Vivienda 2', 2, 54321, 'Poblacion 2', 'Piso 2', 2, 1);
 insert into Vivienda values (3, 'Vivienda 3', 3, 98765, 'Poblacion 3', 'Piso 3', 1, 3);
 insert into Vivienda values (4, 'Vivienda 4', 4, 67890, 'Poblacion 4', 'Piso 4', 2, 4);
 
 create table Inquilino(
     id int primary key,
-    nombre varchar(20) not null,
+    nombre varchar(20),
     apellido1 varchar(20),
     apellido2 varchar(20),
     direccion varchar(20),
@@ -62,9 +62,9 @@ insert into Inquilino values (3, 'Inquilino 3', 'Apellido 1', 'Apellido 2', 'Cal
 insert into Inquilino values (4, 'Inquilino 4', 'Apellido 1', 'Apellido 2', 'Calle 4', '321654987', '1993-04-04');
 
 create table Alquiler (
-    id int auto_increment primary key,
-    fecha_inicio date not null,
-    fecha_fin date not null,
+    id int primary key,
+    fecha_inicio date,
+    fecha_fin date,
     fehca_firma date,
     fianza int,
     importe int,
@@ -74,10 +74,10 @@ create table Alquiler (
     foreign key (id_vivienda) references Vivienda(id)
 );
 
-insert into Alquiler (fecha_inicio, fecha_fin, fehca_firma, fianza, importe, id_inquilino, id_vivienda);
-insert into Alquiler (fecha_inicio, fecha_fin, fehca_firma, fianza, importe, id_inquilino, id_vivienda);
-insert into Alquiler (fecha_inicio, fecha_fin, fehca_firma, fianza, importe, id_inquilino, id_vivienda);
-insert into Alquiler (fecha_inicio, fecha_fin, fehca_firma, fianza, importe, id_inquilino, id_vivienda);
+insert into Alquiler values (1, '2020-01-01', '2020-12-31', '2020-01-01', 1000, 100000, 1, 1);
+insert into Alquiler values (2, '2021-01-01', '2021-12-31', '2021-01-01', 2000, 200000, 2, 2);
+insert into Alquiler values (3, '2022-01-01', '2022-12-31', '2022-01-01', 3000, 300000, 3, 3);
+insert into Alquiler values (4, '2023-01-01', '2023-12-31', '2023-01-01', 4000, 400000, 4, 4);
 
 create table Renovada(
     id int primary key,
@@ -93,3 +93,5 @@ insert into Renovada values (4, 4);
 
 -- Obtener los alquileres que han sido renovados.
 select * from renovada;
+
+--¿Qué propietario tiene más viviendas?
