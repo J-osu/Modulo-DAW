@@ -151,8 +151,8 @@ CREATE TABLE Pedidos (
   Comentarios text,
   CodigoCliente integer NOT NULL,
   PRIMARY KEY (CodigoPedido),
-  CONSTRAINT Pedidos_Cliente FOREIGN KEY (CodigoCliente) REFERENCES Clientes (CodigoCliente)
-) ;
+  CONSTRAINT Pedidos_Cliente FOREIGN KEY (CodigoCliente) REFERENCES Clientes (CodigoCliente) on delete cascade
+);
 
 INSERT INTO Pedidos VALUES (1,'2006-01-17','2006-01-19','2006-01-19','Entregado','Pagado a plazos',5);
 INSERT INTO Pedidos VALUES (2,'2007-10-23','2007-10-28','2007-10-26','Entregado','La entrega llego antes de lo esperado',5);
@@ -569,7 +569,7 @@ CREATE TABLE DetallePedidos (
   PrecioUnidad numeric(15,2) NOT NULL,
   NumeroLinea smallint NOT NULL,
   PRIMARY KEY (CodigoPedido,CodigoProducto),
-  CONSTRAINT DetallePedidos_PedidoFK FOREIGN KEY (CodigoPedido) REFERENCES Pedidos (CodigoPedido),
+  CONSTRAINT DetallePedidos_PedidoFK FOREIGN KEY (CodigoPedido) REFERENCES Pedidos (CodigoPedido) on delete CASCADE,
   CONSTRAINT DetallePedidos_ProductoFK FOREIGN KEY (CodigoProducto) REFERENCES Productos (CodigoProducto)
 );
 
@@ -872,7 +872,7 @@ CREATE TABLE Pagos (
   FechaPago date NOT NULL,
   Cantidad numeric(15,2) NOT NULL,
   PRIMARY KEY (CodigoCliente,IDTransaccion),
-  CONSTRAINT Pagos_clienteFK FOREIGN KEY (CodigoCliente) REFERENCES Clientes (CodigoCliente)
+  CONSTRAINT Pagos_clienteFK FOREIGN KEY (CodigoCliente) REFERENCES Clientes (CodigoCliente) on delete CASCADE
 ) ;
 INSERT INTO Pagos VALUES (1,'PayPal','ak-std-000001','2008-11-10',2000);
 INSERT INTO Pagos VALUES (1,'PayPal','ak-std-000002','2008-12-10',2000);
@@ -949,5 +949,93 @@ DELETE FROM DetallePedidos WHERE CodigoPedido IN (SELECT CodigoPedido FROM Pedid
 DELETE FROM Pedidos WHERE CodigoCliente = (SELECT CodigoCliente FROM Clientes WHERE NombreCliente = 'Tendo Garden');
 
 --===========================================================================================================
---Elimina los clientes que no hayan realizado ningún pedido en 2006.  
-DELETE FROM Clientes WHERE CodigoCliente NOT IN (SELECT DISTINCT CodigoCliente FROM Pedidos WHERE YEAR(FechaPedido) = 2006);
+--Elimina los clientes que no hayan realizado ningún pedido en 2006.
+--(antes de eso modifique las claves foraneas y añadí el on delete cascade)
+DELETE FROM Clientes 
+WHERE CodigoCliente NOT IN (
+    SELECT DISTINCT CodigoCliente 
+    FROM Pedidos 
+    WHERE YEAR(FechaPedido) = 2006
+);
+--(Estos no son para borrar nada solo estaba probando cosas)
+-- select * from pedidos 
+-- where codigocliente in ( select codigocliente from pedidos 
+-- where year(fechapedido) = 2006) order by fechapedido asc limit 2;
+-- select * from detallepedidos where codigopedido 
+-- in (select codigopedido from pedidos where codigocliente 
+-- in (select codigocliente from pedidos where year(fechapedido) = 2006));
+
+--Reduce en un 20% el precio de venta de los 5 productos que tengan más pedidos.
+-- UPDATE Productos P
+-- JOIN (
+--     SELECT CodigoProducto
+--     FROM DetallePedidos
+--     GROUP BY CodigoProducto
+--     ORDER BY SUM(Cantidad) DESC
+--     LIMIT 5
+-- ) AS TopProductos
+-- ON P.CodigoProducto = TopProductos.CodigoProducto
+-- SET P.PrecioVenta = P.PrecioVenta * 0.8;
+
+--Borra los pagos del cliente con menor límite de crédito.
+-- DELETE FROM Pagos WHERE CodigoCliente = (
+--     SELECT CodigoCliente
+--     FROM Clientes
+--     ORDER BY LimiteCredito ASC
+--     LIMIT 1
+-- );
+
+--Establece a 0 el lmite de crdito del cliente que menos unidades pedidas tenga del producto 11679.
+-- update Clientes set LimiteCredito = 0 where CodigoCliente = (
+--     select CodigoCliente from DetallePedidos where CodigoProducto = '11679' group by CodigoCliente order by sum(Cantidad) asc limit 1
+-- );
+
+--Modifica la tabla detalle_pedido para insertar un campo numrico llamado iva. Establece el
+-- valor de ese campo a 18 para aquellos registros cuyo pedido tenga fecha a partir de Enero de
+-- 2009. A continuacin, actualiza el resto de pedidos estableciendo el iva al 21.
+-- ALTER TABLE DetallePedidos ADD COLUMN iva decimal(5,2);
+-- UPDATE DetallePedidos DP
+-- JOIN Pedidos P ON DP.CodigoPedido = P.CodigoPedido
+-- SET DP.iva = 18
+-- WHERE P.FechaPedido >= '2009-01-01';
+-- UPDATE DetallePedidos DP
+-- JOIN Pedidos P ON DP.CodigoPedido = P.CodigoPedido
+-- SET DP.iva = 21
+-- WHERE P.FechaPedido < '2009-01-01';
+
+--Modifica la tabla detalle_pedido para incorporar un campo numrico llamado total_linea y
+-- actualiza todos sus registros para calcular su valor con la frmula: total_linea =
+-- precio_unidad*cantidad * (1 + (iva/100));
+-- alter table DetallePedidos add column total_linea decimal(15, 2);
+-- update DetallePedidos set total_linea = PrecioUnidad * Cantidad * (1 + (iva / 100));
+
+--Borra el cliente que menor lmite de crdito tenga.
+-- DELETE FROM Clientes  
+-- WHERE CodigoCliente = (  
+--     SELECT CodigoCliente  
+--     FROM Clientes  
+--     ORDER BY LimiteCredito ASC  
+--     LIMIT 1  
+-- );
+
+--posible borrarlo solo con una consulta? ¿Por qué? No, porque estoy usando la misma tabla para hacer una subconsulta.
+
+--Inserta una oficina con sede en Granada y tres empleados que sean representantes de ventas y sin jefe asignado.
+insert into Oficinas (CodigoOficina, Ciudad, Pais, CodigoPostal, Telefono, LineaDireccion1, LineaDireccion2)
+VALUES ('G-D', 'Granada', 'España', '28923', '913333333', 'Calle Granada', 'Calle Granada 2');
+insert into Empleados (CodigoEmpleado, Nombre, Apellido1, Apellido2, Extension, Email, CodigoOficina, CodigoJefe, Puesto)
+VALUES (51, 'Juan', 'Pérez', 'Gómez', '1234', 'XXXXXXXXXXXXXXXXXXXXXXXX', 'G-D', NULL, 'Representante de ventas');
+insert into Empleados (CodigoEmpleado, Nombre, Apellido1, Apellido2, Extension, Email, CodigoOficina, CodigoJefe, Puesto)
+VALUES (52, 'Juan', 'Pérez', 'Gómez', '1234', 'XXXXXXXXXXXXXXXXXXXXXXXX', 'G-D', NULL, 'Representante de ventas');
+insert into Empleados (CodigoEmpleado, Nombre, Apellido1, Apellido2, Extension, Email, CodigoOficina, CodigoJefe, Puesto)
+VALUES (53, 'Juan', 'Pérez', 'Gómez', '1234', 'XXXXXXXXXXXXXXXXXXXXXXXX', 'G-D', NULL, 'Representante de ventas');
+
+--Inserta tres clientes que tengan como representantes de ventas los empleados que hemos creado en el paso anterior.
+insert into Clientes (CodigoCliente, NombreCliente, NombreContacto, ApellidoContacto, Telefono, Fax, LineaDireccion1, LineaDireccion2, Ciudad, Region, Pais, CodigoPostal, CodigoEmpleadoRepVentas, LimiteCredito)
+VALUES (51, 'Cliente de ejemplo', 'Cliente', 'Ejemplo', '913333333', '913333333', 'Calle Granada', 'Calle Granada 2', 'Granada', 'España', 'España', '28923', 51, 10000);
+insert into Clientes (CodigoCliente, NombreCliente, NombreContacto, ApellidoContacto, Telefono, Fax, LineaDireccion1, LineaDireccion2, Ciudad, Region, Pais, CodigoPostal, CodigoEmpleadoRepVentas, LimiteCredito)
+VALUES (52, 'Cliente de ejemplo', 'Cliente', 'Ejemplo', '913333333', '913333333', 'Calle Granada', 'Calle Granada 2', 'Granada', 'España', 'España', '28923', 52, 10000);
+insert into Clientes (CodigoCliente, NombreCliente, NombreContacto, ApellidoContacto, Telefono, Fax, LineaDireccion1, LineaDireccion2, Ciudad, Region, Pais, CodigoPostal, CodigoEmpleadoRepVentas, LimiteCredito)
+VALUES (53, 'Cliente de ejemplo', 'Cliente', 'Ejemplo', '913333333', '913333333', 'Calle Granada', 'Calle Granada 2', 'Granada', 'España', 'España', '28923', 53, 10000);
+
+
