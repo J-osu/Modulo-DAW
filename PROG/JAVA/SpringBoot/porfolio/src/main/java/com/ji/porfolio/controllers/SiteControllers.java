@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class SiteControllers {
     @GetMapping("/")
     public String home(){
-        return "/frontend/site/index";
+        return "/www/site/index";
     }
 }
